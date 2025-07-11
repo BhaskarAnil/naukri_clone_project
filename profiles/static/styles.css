@@ -1,0 +1,197 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  background: #ffffff;
+  color: rgb(29, 68, 151);
+}
+header h1 {
+  display: flex;
+}
+header img {
+margin-right: 10px;
+  height: 40px;
+}
+nav a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+form input,
+form button {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+/* Naukri-style registration page styles */
+body {
+  background: #f7fafd;
+}
+.naukri-register-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.naukri-register-left {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 32px 24px;
+  margin-right: 32px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.naukri-register-left img {
+  width: 120px;
+  margin-bottom: 16px;
+}
+.naukri-register-left ul {
+  list-style: none;
+  padding: 0;
+}
+.naukri-register-left li {
+  margin-bottom: 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.naukri-register-left li .check {
+  color: #00c853;
+  font-size: 20px;
+  margin-right: 8px;
+  align-items: center;
+}
+.naukri-register-right {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 32px 40px;
+  width: 480px;
+}
+.naukri-register-right h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.naukri-register-right p {
+  color: #666;
+  margin-bottom: 24px;
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.login-link,.register-link {
+  text-align: right;
+  margin-top: 12px;
+}
+.login-link a,
+.register-link a {
+  color: #6c63ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* login page */
+.naukri-login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.naukri-login-box {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 32px 40px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.login-form .form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+.login-form .form-group  input{
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 16px;
+}
+
+.messages {
+  width: 100%;
+  max-width: 400px;
+  margin: 16px auto;
+  padding: 0;
+  list-style: none;
+}
+.messages li {
+  background: #ffeaea;
+  color: #d32f2f;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+.messages li.success {
+  background: #eaffea;
+  color: #388e3c;
+}
+.form-error {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 4px;
+  display: block;
+}
+
+
+

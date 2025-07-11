@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | naukri</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1><span><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"></span> naukri</h1>
+    <nav>
+      <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <div class="dashboard-main">
+      <h2>Welcome, {{ request.user.username }}</h2>
+      {% if request.user.is_employer %}
+        <p>You are an employer. View your company profile.</p>
+      {% else %}
+        <p>You are a job seeker. View your profile.</p>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
