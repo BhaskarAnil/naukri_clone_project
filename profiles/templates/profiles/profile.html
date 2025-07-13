@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile | naukri</title>
+  <link rel="stylesheet" href="{% static 'profile.css' %}">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+            <a href="/" class="brand-logo"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"> naukri</a>
+      <nav class="main-nav">
+        <a href="/home/">Home</a>
+        <a href="/profile/" class="active">Profile</a>
+        <a href="/logout/" class="logout-btn">Logout</a>
+      </nav>
+      <div class="user-menu">
+        <span class="avatar">{{ user.username|slice:":2"|upper }}</span>
+        <span class="username">{{ user.username }}</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="profile-section">
+      <h1>My Profile</h1>
+      <form method="post" enctype="multipart/form-data" class="profile-form">
+        {% csrf_token %}
+        <div class="profile-fields">
+          <div class="profile-field">
+            <label>Username</label>
+            <input type="text" value="{{ user.username }}" disabled />
+          </div>
+          <div class="profile-field">
+            <label>Email</label>
+            <input type="email" value="{{ user.email }}" disabled />
+          </div>
+          <div class="profile-field">
+            {{ form.full_name.label_tag }}
+            {{ form.full_name }}
+          </div>
+          <div class="profile-field">
+            {{ form.location.label_tag }}
+            {{ form.location }}
+          </div>
+          <div class="profile-field">
+            {{ form.experience.label_tag }}
+            {{ form.experience }}
+          </div>
+          <div class="profile-field">
+            {{ form.skills.label_tag }}
+            {{ form.skills }}
+          </div>
+          <div class="profile-resume-url">
+            {{ form.resume_url.label_tag }}
+            {{ form.resume_url }}
+        </div>
+        <div class="profile-view-resume-link">
+            {% if profile.resume_url %}
+              <a href="{{ profile.resume_url }}" target="_blank">View Resume</a>
+            {% endif %}
+        </div>
+        <div class="profile-actions">
+          <button type="submit">Update Profile</button>
+        </div>
+      </form>
+      <form method="post" style="margin-top:2rem;">
+        {% csrf_token %}
+        <input type="hidden" name="delete" value="1" />
+        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?');">Delete My Account</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

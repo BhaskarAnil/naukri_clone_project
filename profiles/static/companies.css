@@ -1,0 +1,156 @@
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7fafd;
+  margin: 0;
+  color: #222;
+}
+
+.main-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 0.5rem 0;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0072e1;
+  text-decoration: none;
+}
+.brand-logo img {
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5rem;
+  border-radius: 8px;
+}
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+.main-nav a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.main-nav a.active, .main-nav a:hover {
+  background-color: #e6f0fa;
+  color: #0072e1;
+}
+.logout-btn {
+  color: #e14c4c !important;
+  font-weight: 600;
+}
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.avatar {
+  background: #0072e1;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.username {
+  font-size: 1rem;
+  color: #333;
+}
+
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.companies-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+.companies-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0072e1;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.companies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.company-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.company-card {
+  background: #f4f8fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 220px;
+}
+.company-card:hover {
+  box-shadow: 0 6px 24px rgba(0,114,225,0.10);
+  transform: translateY(-4px) scale(1.03);
+}
+.company-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.company-logo-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: #0072e1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.company-info {
+  text-align: center;
+}
+.company-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+.company-description {
+  font-size: 1rem;
+  color: #555;
+  min-height: 48px;
+}
+

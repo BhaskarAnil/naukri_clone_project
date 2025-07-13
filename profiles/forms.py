@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Company
+from .models import User, Company, Profile
 from django.contrib.auth import authenticate
 
 class RegisterForm(forms.Form):
@@ -47,7 +47,7 @@ class RegisterForm(forms.Form):
             mobile=self.cleaned_data['mobile']
         )
         if is_employer and company_name:
-            company = Company.objects.filter(user_id=user).first()
+            company = Company.objects.filter(user=user).first()
             if company:
                 company.company_name = company_name
                 company.save()
@@ -66,3 +66,22 @@ class LoginForm(forms.Form):
             raise forms.ValidationError('No user found with these credentials. Please check your username and password and try again.')
         cleaned_data['user'] = user
         return cleaned_data
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['full_name', 'location', 'experience', 'skills', 'resume_url']
+        widgets = {
+            'experience': forms.Textarea(attrs={'rows': 3}),
+            'skills': forms.Textarea(attrs={'rows': 3}),
+            'resume_url': forms.URLInput(attrs={'placeholder': 'Paste your Google Drive link here'})
+        }
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = ['company_name', 'company_logo_url', 'description']
+        widgets = {
+            'company_logo_url': forms.URLInput(attrs={'placeholder': 'Paste your Google Drive image link here'}),
+            'description': forms.Textarea(attrs={'rows': 3}),
+        }

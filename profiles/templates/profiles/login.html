@@ -7,38 +7,39 @@
   <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-  <header>
-    <h1><span><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"></span> naukri</h1>
-    <nav>
-      <div class="register-link">
+  <!-- header -->
+  <header class="register-header">
+    <h1 class="register-brand"><span class="brand-img"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"></span> naukri</h1>
+    <nav class="register-nav">
+      <div class="register-login-switch">
         Not yet Registered? <a href="{% url 'register' %}">Register</a> here
       </div>
     </nav>
   </header>
   <main>
-    <div class="naukri-login-main">
-      <div class="naukri-login-box">
+    <div class="login-main">
+      <div class="login-box">
         <h2>Login</h2>
         <form method="POST" class="login-form">
           {% csrf_token %}
-          <div class="form-group">
+          <div class="register-field">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Enter your username" value="{{ form.username.value|default_if_none:'' }}" required />
             {% if form.username.errors %}
-              <span class="form-error">{{ form.username.errors.0 }}</span>
+              <span class="register-error">{{ form.username.errors.0 }}</span>
             {% endif %}
           </div>
-          <div class="form-group">
+          <div class="register-field">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter your password" required />
             {% if form.password.errors %}
-              <span class="form-error">{{ form.password.errors.0 }}</span>
+              <span class="register-error">{{ form.password.errors.0 }}</span>
             {% endif %}
           </div>
           {% if form.non_field_errors %}
-            <span class="form-error">{{ form.non_field_errors.0 }}</span>
+            <span class="register-error">{{ form.non_field_errors.0 }}</span>
           {% endif %}
-          <button type="submit" class="submit-btn">Login</button>
+          <button type="submit" class="register-submit">Login</button>
         </form>
       </div>
     </div>
