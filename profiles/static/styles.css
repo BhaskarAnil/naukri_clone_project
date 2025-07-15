@@ -1,3 +1,4 @@
+
 body {
   font-family: Arial, sans-serif;
   padding: 1rem;
@@ -197,3 +198,55 @@ body {
 
 
 
+@media (max-width: 700px) {
+  .header-inner, main {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .main-nav {
+    gap: 0.7rem;
+    font-size: 0.98rem;
+  }
+  .user-menu {
+    gap: 0.3rem;
+  }
+  .section {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+  .list {
+    gap: 1rem;
+  }
+  .card {
+    padding: 1rem 0.5rem 0.7rem 0.5rem;
+    min-height: 120px;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+  .logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .info {
+    text-align: left;
+  }
+  .name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .description {
+    font-size: 0.95rem;
+    min-height: 32px;
+  }
+}

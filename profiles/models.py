@@ -15,7 +15,7 @@ class User(AbstractUser):
 class Profile(models.Model):
     profile_id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
-        'User', on_delete=models.CASCADE, db_column='user_id')
+        'User', on_delete=models.CASCADE, db_column='user_id', related_name='profile')
     full_name = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
 

@@ -9,7 +9,6 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         User = get_user_model()
 
-        # --- Employers (Companies) ---
         employers_data = [
             {
                 "username": "google_hr",
@@ -55,7 +54,6 @@ class Command(BaseCommand):
             company.description = emp["description"]
             company.save()
 
-        # --- Jobseekers (Profiles) ---
         jobseekers_data = [
             {
                 "username": "alicej",

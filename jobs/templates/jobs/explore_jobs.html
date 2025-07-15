@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore Jobs | Jobseeker</title>
+    <link rel="stylesheet" href="{% static 'my_jobs.css' %}">
+</head>
+<body>
+    <header class="header-bar">
+        <div class="header-content">
+            <a href="/jobseeker-home/" class="logo-link"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri" class="logo-img"> naukri</a>
+            <nav class="nav-menu">
+                <a href="/home/">Home</a>
+                <a href="/profile/">Profile</a>
+                <a href="/explore-jobs/" class="active">Explore Jobs</a>
+                <a href="/companies/">Explore Companies</a>
+                <a href="/logout/" class="logout-link">Logout</a>
+            </nav>
+            <div class="user-info">
+                <span class="user-avatar">{{ user.username|slice:":2"|upper }}</span>
+                <span class="user-name">{{ user.username }}</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="my-jobs-section">
+            <div class="my-jobs-header">
+                <h1 class="my-jobs-title">Explore Jobs</h1>
+                <div class="job-filters">
+                    <a href="/explore-jobs?filter=all"{% if filter_type == 'all' or not filter_type %} class="active "{% endif %}>All</a>
+                    <a href="/explore-jobs?filter=applied"{% if filter_type == 'applied' %} class="active"{% endif %}>Applied</a>
+                    <a href="/explore-jobs?filter=liked"{% if filter_type == 'liked' %} class="active "{% endif %}>Liked</a>
+                    <a href="/explore-jobs?filter=saved"{% if filter_type == 'saved' %} class="active "{% endif %}>Saved</a>
+                    <a href="/explore-jobs?filter=disliked"{% if filter_type == 'disliked' %} class="active "{% endif %}>Disliked</a>
+                </div>
+            </div>
+            <div class="jobs-list">
+                {% if jobs %}
+                    {% for job in jobs %}
+                        <div class="job-card">
+                            <div class="job-card-header">
+                                <h2 class="job-title">{{ job.title }}</h2>
+                                <span class="company-info">
+                                    {% if job.company.company_logo_url %}
+                                        <img src="{{ job.company.company_logo_url }}" alt="{{ job.company.company_name }}" class="company-logo">
+                                    {% endif %}
+                                    <span class="company-name">{{ job.company.company_name }}</span>
+                                </span>
+                            </div>
+                            <div class="job-details">
+                                <p class="job-location">Location: {{ job.location }}</p>
+                                <p class="job-salary">Salary: {{ job.salary|default:'Not specified' }}</p>
+                                <p class="job-description">{{ job.description|truncatewords:25 }}</p>
+                                <p class="job-posted">Posted on: {{ job.posted_at|date:'M d, Y' }}</p>
+                            </div>
+                            <div class="job-actions">
+                                {% if job.is_applied %}
+                                    <span class="applied-label applied">Applied</span>
+                                {% else %}
+                                    <a href="/jobs/{{ job.job_id }}/apply/" class="apply-job-btn">Apply</a>
+                                {% endif %}
+
+                                {% if job.is_saved %}
+                                    <a href="/jobs/{{ job.job_id }}/unsave/" class="unsave-job-btn saved">Unsave</a>
+                                {% else %}
+                                    <a href="/jobs/{{ job.job_id }}/save/" class="save-job-btn">Save</a>
+                                {% endif %}
+
+                                {% if job.is_liked %}
+                                    <a href="/jobs/{{ job.job_id }}" class="like-job-btn liked">Liked</a>
+                                {% else %}
+                                    <a href="/jobs/{{ job.job_id }}/like/" class="like-job-btn">Like</a>
+                                {% endif %}
+
+                                {% if job.is_disliked %}
+                                    <a href="/jobs/{{ job.job_id }}" class="dislike-job-btn disliked">Disliked</a>
+                                {% else %}
+                                    <a href="/jobs/{{ job.job_id }}/dislike/" class="dislike-job-btn">Dislike</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-jobs-msg">No jobs found at the moment. Please check back later.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

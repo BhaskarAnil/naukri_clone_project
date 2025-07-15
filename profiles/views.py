@@ -1,15 +1,7 @@
 
 # Explore Companies view for jobseekers
 from django.contrib.auth import get_user_model
-
-def companies_view(request):
-    # Only allow jobseekers to view this page
-    if not request.user.is_authenticated or getattr(request.user, 'is_employer', False):
-        return redirect('home')
-    companies = Company.objects.all()
-    return render(request, 'profiles/companies.html', {'companies': companies})
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from .forms import RegisterForm, LoginForm, ProfileForm, CompanyForm
@@ -136,3 +128,8 @@ def employer_profile_view(request):
         'form': form,
         'company': company,
     })
+def companies_view(request):
+    if not request.user.is_authenticated or getattr(request.user, 'is_employer', False):
+        return redirect('home')
+    companies = Company.objects.all()
+    return render(request, 'profiles/companies.html', {'companies': companies})

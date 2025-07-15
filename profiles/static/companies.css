@@ -1,4 +1,5 @@
 
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #f7fafd;
@@ -9,7 +10,7 @@ body {
 .main-header {
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
 }
 .header-inner {
   max-width: 1100px;
@@ -49,9 +50,10 @@ body {
   color: #0072e1;
 }
 .logout-btn {
-  color: #e14c4c !important;
+  color: #e14c4c;
   font-weight: 600;
 }
+
 .user-menu {
   display: flex;
   align-items: center;
@@ -80,7 +82,7 @@ main {
   padding: 0 1rem;
 }
 .companies-section {
-  background: #fff;
+  background: #c0e4ef;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
   padding: 2rem 2rem 1.5rem 2rem;
@@ -120,11 +122,12 @@ main {
 .company-logo {
   width: 64px;
   height: 64px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 12px;
   margin-bottom: 1rem;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  padding: 6px;
 }
 .company-logo-placeholder {
   width: 64px;
@@ -154,3 +157,55 @@ main {
   min-height: 48px;
 }
 
+@media (max-width: 700px) {
+  .header-inner, main {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .main-nav {
+    gap: 0.7rem;
+    font-size: 0.98rem;
+  }
+  .user-menu {
+    gap: 0.3rem;
+  }
+  .companies-section {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .companies-title {
+    font-size: 1.3rem;
+  }
+  .companies-list {
+    gap: 1rem;
+  }
+  .company-card {
+    padding: 1rem 0.5rem 0.7rem 0.5rem;
+    min-height: 120px;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+  .company-logo, .company-logo-placeholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 7px;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .company-info {
+    text-align: left;
+  }
+  .company-name {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .company-description {
+    font-size: 0.95rem;
+    min-height: 32px;
+  }
+}
