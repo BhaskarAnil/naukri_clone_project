@@ -73,10 +73,12 @@ body {
   margin: 0 18px;
   text-decoration: none;
   font-size: 1rem;
-  transition: color 0.2s;
 }
-.main-nav a:hover {
-  color: #6c63ff;
+.main-nav a:hover, .main-nav a.active {
+  color: #ffffff;
+  background-color: #3189fb;
+  border-radius: 4px;
+  padding: 5px;
 }
 .user-menu {
   display: flex;
@@ -139,14 +141,16 @@ body {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     position: absolute;
-    top: 60px;
-    left: 0;
+    top: 50px;
+    right: 0;
     padding: 0.5rem 1rem;
     border-radius: 0 0 10px 10px;
     z-index: 100;
   }
   .main-nav.open {
     display: flex;
+    width: 50%;
+    background-color: #ffffff;
   }
   .main-nav a {
     margin: 0;

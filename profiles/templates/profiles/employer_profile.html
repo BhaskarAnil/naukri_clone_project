@@ -1,27 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Company Profile | naukri</title>
-  <link rel="stylesheet" href="{% static 'profile.css' %}">
-</head>
-<body>
-  <header class="main-header">
-    <div class="header-inner">
-          <a href="/" class="brand-logo"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"> naukri</a>
-
-      <nav class="main-nav">
-        <a href="/employer-home/">Home</a>
-        <a href="/employer/profile/" class="active">Profile</a>
-        <a href="/logout/" class="logout-btn">Logout</a>
-      </nav>
-      <div class="user-menu">
-        <span class="avatar">{{ user.username|slice:":2"|upper }}</span>
-        <span class="username">{{ user.username }}</span>
-      </div>
-    </div>
-  </header>
+{% extends "profiles/employer_home_base.html" %}
+{% block content %}
   <main>
     <section class="profile-section">
       <h1>Company Profile</h1>
@@ -65,5 +43,6 @@
       </form>
     </section>
   </main>
-</body>
-</html>
+  <script src="/static/jobs.js"></script>
+
+{% endblock %}

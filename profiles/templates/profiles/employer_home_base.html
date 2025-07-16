@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Home | Job Portal</title>
+  <link rel="stylesheet" href="{% static 'my_jobs.css' %}">
+  <link rel="stylesheet" href="/static/home.css">
+  <link rel="stylesheet" href="/static/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="/" class="brand-logo"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"> naukri</a>
+      <div class="user-menu" style="margin-left: auto;">
+        <span class="avatar">{{ employer_initials }}</span>
+        <span class="username">{{ employer_name }}</span>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+      <nav class="main-nav">
+        <a href="/employer-home/"{% if request.path == '/employer-home/' %} class="active"{% endif %}>Home</a>
+        <a href="/employer/profile/"{% if request.path == '/employer/profile/' %} class="active"{% endif %}>Profile</a>
+        <a href="/employer/jobs/"{% if request.path == '/employer/jobs/' %} class="active"{% endif %}>My Jobs</a>
+        <a href="/employer/reviews/"{% if request.path == '/employer/reviews/' %} class="active"{% endif %}>Reviews</a>
+        <a href="/logout" class="logout-btn">Logout</a>
+      </nav>
+    </div>
+  </header>
+    {% block content %}
+    <h2>Welcome, {{ employer_name }}!</h2>
+    <p>Manage your company profile, post jobs, and review applicants all in one place.</p>
+    {% endblock %}
+</body>
+</html>

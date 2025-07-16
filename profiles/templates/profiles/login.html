@@ -4,17 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Login | naukri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
   <!-- header -->
   <header class="register-header">
     <h1 class="register-brand"><span class="brand-img"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"></span> naukri</h1>
-    <nav class="register-nav">
-      <div class="register-login-switch">
-        Not yet Registered? <a href="{% url 'register' %}">Register</a> here
-      </div>
-    </nav>
   </header>
   <main>
     <div class="login-main">
@@ -40,10 +36,21 @@
             <span class="register-error">{{ form.non_field_errors.0 }}</span>
           {% endif %}
           <button type="submit" class="register-submit">Login</button>
+          <nav class="register-nav">
+      <div class="register-login-switch">
+        Not yet Registered? <a href="{% url 'register' %}">Register</a> 
+      </div>
+    </nav>
         </form>
       </div>
     </div>
   </main>
 </body>
 </html>
+
+
+
+
+
+
 

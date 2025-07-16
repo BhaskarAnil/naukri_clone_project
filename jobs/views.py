@@ -12,13 +12,17 @@ from jobs.models import SavedJob, LikedJob, DislikedJob, Application
 @login_required(login_url='login')
 def employer_jobs_view(request):
     user = request.user
+    employer_name = user.username
+    initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
     jobs = Job.objects.filter(company__user=user).annotate(likes_count=Count('liked_by'), applications_count=Count('applications'))
-    return render(request, 'jobs/my_jobs.html', {'user': user, 'jobs': jobs})
+    return render(request, 'jobs/my_jobs.html', {'user': user, 'jobs': jobs, 'employer_name': employer_name, 'employer_initials': initials})
 
 
 @login_required(login_url='login')
 def add_job_view(request):
     user = request.user
+    employer_name = user.username
+    initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
     company = Company.objects.filter(user=user).first()
     if request.method == 'POST':
         form = JobForm(request.POST)
@@ -30,7 +34,7 @@ def add_job_view(request):
             return redirect('employer_jobs')
     else:
         form = JobForm()
-    return render(request, 'jobs/add_job.html', {'form': form, 'user': user})
+    return render(request, 'jobs/add_job.html', {'form': form, 'user': user, 'employer_name': employer_name, 'employer_initials': initials})
 
 
 @login_required(login_url='login')
@@ -45,6 +49,8 @@ def delete_job_view(request, job_id):
 @login_required(login_url='login')
 def edit_job_view(request, job_id):
     user = request.user
+    employer_name = user.username
+    initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
     job = get_object_or_404(Job, pk=job_id, company__user=user)
     if request.method == 'POST':
         form = JobForm(request.POST, instance=job)
@@ -58,7 +64,7 @@ def edit_job_view(request, job_id):
         'user': user,
         'edit_mode': True,
         'job': job
-    })
+    , 'employer_name': employer_name, 'employer_initials': initials})
 
 @login_required(login_url='login')
 def explore_jobs_view(request):
@@ -124,6 +130,8 @@ def apply_job_view(request, job_id):
     return redirect(request.META.get('HTTP_REFERER', reverse('explore_jobs')))
 @login_required(login_url='login')
 def applications_view(request,job_id):
+    employer_name = request.user.username
+    initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
     job = get_object_or_404(Job,pk=job_id)
     applications = Application.objects.filter(job=job).select_related('user__profile')
-    return render(request, 'jobs/applications.html', {'applications': applications})
+    return render(request, 'jobs/applications.html', {'applications': applications, 'employer_name': employer_name, 'employer_initials': initials})

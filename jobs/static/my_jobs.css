@@ -351,6 +351,7 @@ main {
   margin-top: 0.5rem;
 }
 .applications{
+    text-decoration: none;
   font-size: 1.2rem;
   padding: 10px;
   border-radius: 8px;
@@ -429,20 +430,33 @@ main {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+    border-radius: 4px;
+    background-color: #bad9f8;
+}
+.application-card-header h2{
+    margin: 5px;
+
 }
 .applicant-name {
     font-size: 1.2rem;
     font-weight: 600;
     color: #222;
+    margin-left: 10px;
 }
 .applicant-details {
     margin-bottom: 0.7rem;
+}
+.applicant-details .resume-url{
+   text-decoration: none;
 }
 .applicant-fullname, .applicant-skills, .applicant-experience, .applicant-resume-url,.applicant-location {
     margin: 0.2rem 0;
     color: #444;
     font-size: 1rem;
+    text-align: justify;
+    
 }
+
 .no-application-msg{
   color: #888;
     font-size: 1.1rem;
@@ -478,7 +492,7 @@ main {
   }
   .my-jobs-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.7rem;
     margin-bottom: 1rem;
   }
@@ -507,6 +521,22 @@ main {
   .job-title {
     font-size: 1rem;
   }
+  .job-responses{
+    justify-content: space-between;
+    align-items: center;
+  }
+  .job-responses a{
+padding: 5px;
+  }
+  .applications{
+    font-size: 1rem;
+text-align: center;
+height: fit-content;
+  }
+  .applications-count{
+    padding: 2px;
+    margin-left: 5px;
+  }
   .company-info {
     gap: 0.3rem;
   }
@@ -526,5 +556,19 @@ main {
     font-size: 0.93rem;
     padding: 0.3rem 0.7rem;
     border-radius: 4px;
+  }
+  .add-job-title{
+    font-size: 1.4rem;
+  }
+  .submit-job-btn, .cancel-job-btn{
+    display: flex;
+    align-items: center;
+  }
+  .application-title{
+    font-size: 1.6rem;
+  }
+  .back-to-jobs-btn{
+    font-size: 0.8rem;
+    padding: 5px;
   }
 }

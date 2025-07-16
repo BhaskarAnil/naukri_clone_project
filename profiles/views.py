@@ -73,7 +73,9 @@ def employer_home_view(request):
 # jobseeker home view
 @login_required(login_url='login')
 def home_view(request):
-    return render(request, 'profiles/home.html')
+    jobseeker_name = request.user.username
+    initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
+    return render(request, 'profiles/home.html',{'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials})
 
 # logout view
 @login_required(login_url='login')
@@ -85,6 +87,8 @@ def logout_view(request):
 @login_required(login_url='login')
 def profile_view(request):
     user = request.user
+    jobseeker_name = user.username
+    initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
     if user.is_employer:
         return redirect('employer_home')
     profile = getattr(user, 'profile', None)
@@ -101,13 +105,15 @@ def profile_view(request):
     return render(request, 'profiles/profile.html', {
         'user': user,
         'form': form,
-        'profile': profile,
+        'profile': profile,'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials,
     })
 
 # employer profile view
 @login_required(login_url='login')
 def employer_profile_view(request):
     user = request.user
+    employer_name = user.username
+    initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
     if not user.is_employer:
         return redirect('profile')
     company = getattr(user, 'company', None)
@@ -123,11 +129,14 @@ def employer_profile_view(request):
             return redirect('employer_profile')
     else:
         form = CompanyForm(instance=company)
-    return render(request, 'profiles/employer_profile.html', {
+    context = {
+        'employer_name': employer_name,
+        'employer_initials': initials,
         'user': user,
         'form': form,
         'company': company,
-    })
+    }
+    return render(request, 'profiles/employer_profile.html', context)
 def companies_view(request):
     if not request.user.is_authenticated or getattr(request.user, 'is_employer', False):
         return redirect('home')

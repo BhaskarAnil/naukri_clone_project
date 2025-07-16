@@ -1,10 +1,8 @@
-
 body {
   font-family: Arial, sans-serif;
   padding: 1rem;
   background: #d2e3f5;
   margin-top: 12px;
-
 }
 
 /* registration page */
@@ -31,6 +29,7 @@ body {
   margin: 0px 15px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .register-login-switch {
   text-align: right;
@@ -38,12 +37,10 @@ body {
   font-size: 1rem;
 }
 .register-login-switch a {
-  color: hsl(0, 0%, 100%);
+  color: hsl(224, 85%, 26%);
   font-weight: 600;
-  padding: 10px;
-  border-radius: 4px;
   text-decoration: none;
-  background-color: #1d4497;
+  flex-wrap: wrap;
 }
 .register-employer-btn {
   color: #ffffff;
@@ -134,8 +131,9 @@ body {
   cursor: pointer;
   margin-top: 0.75rem;
 }
- 
-.login-link,.register-link {
+
+.login-link,
+.register-link {
   text-align: right;
   margin-top: 12px;
 }
@@ -156,10 +154,9 @@ body {
 .login-box {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: 32px 40px;
   width: 35%;
-  min-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,18 +166,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-.login-form .form-group label {
-  font-weight: 500;
-  margin-bottom: 6px;
-  display: block;
-}
-.login-form .form-group  input{
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  font-size: 16px;
 }
 
 .register-error {
@@ -196,57 +181,60 @@ body {
   display: block;
 }
 
-
-
 @media (max-width: 700px) {
-  .header-inner, main {
-    max-width: 100%;
-    padding: 0 0.5rem;
+  .register-brand {
+    font-size: 1.2rem;
+    margin: 5px 5px;
   }
-  .header-inner {
+  .login-box {
+    width: 90%;
+    padding: 20px;
+  }
+  .register-nav {
+    width: 100%;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:5px ;
+    
+  }
+  .line-break{
+    border-bottom: 0.5px solid black;
+  }
+  .register-login-switch {
+    font-size: 0.7rem;
+    display: flex;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align:left;
+  }
+ 
+  .register-login-switch a {
+    margin-left: 5px;
+ 
+  }
+  .register-login-switch .register-employer-btn{
+    width: 40%;
+  }
+  .register-field input {
+    width: 90%;
+  }
+  .register-main {
+    align-items: center;
+    flex-direction: column-reverse;
+    gap:20px
+  }
+  .register-left,.register-right{
+    width: 90%;
+    padding: 20px;
+    margin: 0px;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.7rem;
   }
-  .main-nav {
-    gap: 0.7rem;
-    font-size: 0.98rem;
-  }
-  .user-menu {
-    gap: 0.3rem;
-  }
-  .section {
-    padding: 1rem 0.5rem 1rem 0.5rem;
-    border-radius: 10px;
-  }
-  .title {
-    font-size: 1.3rem;
-  }
-  .list {
-    gap: 1rem;
-  }
-  .card {
-    padding: 1rem 0.5rem 0.7rem 0.5rem;
-    min-height: 120px;
-    border-radius: 8px;
-    max-width: 100%;
-  }
-  .logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 7px;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  .info {
-    text-align: left;
-  }
-  .name {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-  .description {
-    font-size: 0.95rem;
-    min-height: 32px;
+  .register-right h2{
+    font-size: 1.2rem;
+    align-self: center;
   }
 }
