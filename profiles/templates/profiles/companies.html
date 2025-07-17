@@ -1,28 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Explore Companies | naukri</title>
-  <link rel="stylesheet" href="{% static 'companies.css' %}">
-</head>
-<body>
-  <header class="main-header">
-    <div class="header-inner">
-      <a href="/home/" class="brand-logo"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"> naukri</a>
-      <nav class="main-nav">
-        <a href="/home/">Home</a>
-        <a href="/profile/">Profile</a>
-        <a href="/companies/" class="active">Explore Companies</a>
-        <a href="/explore-jobs/">Explore jobs</a>
-        <a href="/logout/" class="logout-btn">Logout</a>
-      </nav>
-      <div class="user-menu">
-        <span class="avatar">{{ user.username|slice:":2"|upper }}</span>
-        <span class="username">{{ user.username }}</span>
-      </div>
-    </div>
-  </header>
+{% extends "profiles/jobseeker_home_base.html" %}
+{% block content %}
   <main>
     <section class="companies-section">
       <h1 class="companies-title">Explore Companies</h1>
@@ -45,5 +22,5 @@
       </div>
     </section>
   </main>
-</body>
-</html>
+ <script src="/static/jobs.js"></script>
+ {% endblock %}

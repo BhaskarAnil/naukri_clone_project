@@ -571,4 +571,11 @@ height: fit-content;
     font-size: 0.8rem;
     padding: 5px;
   }
+  .job-filters {
+    flex-wrap: wrap;
+  }
+  .job-filters a{
+    width: 30%;
+    margin: 0px 10px;
+  }
 }

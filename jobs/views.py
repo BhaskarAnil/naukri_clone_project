@@ -70,6 +70,8 @@ def edit_job_view(request, job_id):
 def explore_jobs_view(request):
     jobs = Job.objects.order_by('-posted_at')
     user = request.user
+    jobseeker_name = user.username
+    initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
     filter_type = request.GET.get('filter', 'all')
     job_ids = [job.job_id for job in jobs]
     applied_ids = set(Application.objects.filter(user=user, job_id__in=job_ids).values_list('job_id', flat=True))
@@ -91,7 +93,7 @@ def explore_jobs_view(request):
         job.is_saved = job.job_id in saved_ids
         job.is_liked = job.job_id in liked_ids
         job.is_disliked = job.job_id in disliked_ids
-    return render(request, 'jobs/explore_jobs.html', {'jobs': jobs, 'user': user,'filter_type': filter_type})
+    return render(request, 'jobs/explore_jobs.html', {'jobs': jobs, 'user': user,'filter_type': filter_type, 'jobseeker_name': jobseeker_name, 'jobseeker_initials': initials})
 @login_required(login_url='login')
 def save_job_view(request, job_id):
     user = request.user

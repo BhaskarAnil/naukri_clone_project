@@ -138,7 +138,10 @@ def employer_profile_view(request):
     }
     return render(request, 'profiles/employer_profile.html', context)
 def companies_view(request):
+    user = request.user
+    jobseeker_name = user.username
+    initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
     if not request.user.is_authenticated or getattr(request.user, 'is_employer', False):
         return redirect('home')
     companies = Company.objects.all()
-    return render(request, 'profiles/companies.html', {'companies': companies})
+    return render(request, 'profiles/companies.html', {'companies': companies,'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials,})
