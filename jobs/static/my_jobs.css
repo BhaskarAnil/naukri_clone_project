@@ -89,6 +89,7 @@ main {
 .my-jobs-header {
   display: flex;
   align-items: center;
+  flex-wrap:wrap ;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
@@ -96,6 +97,16 @@ main {
   font-size: 2rem;
   font-weight: 700;
   color: #0072e1;
+}
+.job-search-form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.job-search-input{
+  width: 80%;
+  max-width:500px ;
 }
 .add-job-btn {
   background: #0072e1;
@@ -415,7 +426,36 @@ main {
   padding: 10px;
   color: #2f7c0b;
 }
-
+.job-search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1.2em 0 1.5em 0;
+}
+.job-search-input {
+  flex: 1;
+  padding: 0.6em 1em;
+  border: 1px solid #b6c3e6;
+  border-radius: 6px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s;
+}
+.job-search-input:focus {
+  border-color: #3949ab;
+}
+.job-search-btn {
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+.job-search-btn:hover {
+  background-color: #222e6a;
+}
 /* #applications */
 .applications-section {
   background: rgba(255, 255, 255, 0.686);

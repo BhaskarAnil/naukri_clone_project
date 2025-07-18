@@ -73,27 +73,34 @@ def explore_jobs_view(request):
     jobseeker_name = user.username
     initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
     filter_type = request.GET.get('filter', 'all')
-    job_ids = [job.job_id for job in jobs]
+    job_ids = list(jobs.values_list('job_id', flat=True))
     applied_ids = set(Application.objects.filter(user=user, job_id__in=job_ids).values_list('job_id', flat=True))
     saved_ids = set(SavedJob.objects.filter(user=user, job_id__in=job_ids).values_list('job_id', flat=True))
     liked_ids = set(LikedJob.objects.filter(user=user, job_id__in=job_ids).values_list('job_id', flat=True))
     disliked_ids = set(DislikedJob.objects.filter(user=user, job_id__in=job_ids).values_list('job_id', flat=True))
+
     if filter_type == 'applied':
-        jobs = Job.objects.filter(job_id__in=applied_ids).order_by('-posted_at')
+        jobs = jobs.filter(job_id__in=applied_ids)
     elif filter_type == 'saved':
-        jobs = Job.objects.filter(job_id__in=saved_ids).order_by('-posted_at')
+        jobs = jobs.filter(job_id__in=saved_ids)
     elif filter_type == 'liked':
-        jobs = Job.objects.filter(job_id__in=liked_ids).order_by('-posted_at')
+        jobs = jobs.filter(job_id__in=liked_ids)
     elif filter_type == 'disliked':
-        jobs = Job.objects.filter(job_id__in=disliked_ids).order_by('-posted_at')
-    else:
-        jobs = Job.objects.all().order_by('-posted_at')
+        jobs = jobs.filter(job_id__in=disliked_ids)
+
+    jobs = jobs.order_by('-posted_at')
     for job in jobs:
         job.is_applied = job.job_id in applied_ids
         job.is_saved = job.job_id in saved_ids
         job.is_liked = job.job_id in liked_ids
         job.is_disliked = job.job_id in disliked_ids
-    return render(request, 'jobs/explore_jobs.html', {'jobs': jobs, 'user': user,'filter_type': filter_type, 'jobseeker_name': jobseeker_name, 'jobseeker_initials': initials})
+    return render(request, 'jobs/explore_jobs.html', {
+        'jobs': jobs,
+        'user': user,
+        'filter_type': filter_type,
+        'jobseeker_name': jobseeker_name,
+        'jobseeker_initials': initials
+    })
 @login_required(login_url='login')
 def save_job_view(request, job_id):
     user = request.user

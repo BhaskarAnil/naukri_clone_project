@@ -4,6 +4,10 @@
         <section class="my-jobs-section">
             <div class="my-jobs-header">
                 <h1 class="my-jobs-title">Explore Jobs</h1>
+                <div id="job-search-form" class="job-search-form" >
+                    <input type="text" id="job-search-input" name="search" class="job-search-input" placeholder="Search jobs by keywords..."  autocomplete="off">
+                    <button  id="search-btn" class="job-search-btn"><i class="fa fa-search"></i></button>
+                </div>
                 <div class="job-filters">
                     <a href="/explore-jobs?filter=all"{% if filter_type == 'all' or not filter_type %} class="active "{% endif %}><i class="fa-solid fa-list"></i> All</a>
                     <a href="/explore-jobs?filter=applied"{% if filter_type == 'applied' %} class="active"{% endif %}><i class="fa-solid fa-check"></i> Applied</a>
@@ -12,10 +16,10 @@
                     <a href="/explore-jobs?filter=disliked"{% if filter_type == 'disliked' %} class="active "{% endif %}><i class="fa-solid fa-thumbs-down"></i> Disliked</a>
                 </div>
             </div>
-            <div class="jobs-list">
+            <div class="jobs-list" id="jobs-list">
                 {% if jobs %}
                     {% for job in jobs %}
-                        <div class="job-card">
+                        <div class="job-card" data-title="{{ job.title|lower }}" data-description="{{ job.description|lower }}" data-location="{{ job.location|lower }}" data-company="{{ job.company.company_name|lower }}">
                             <div class="job-card-header">
                                 <h2 class="job-title">{{ job.title }}</h2>
                                 <span class="company-info">

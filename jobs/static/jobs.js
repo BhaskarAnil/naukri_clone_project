@@ -1,3 +1,31 @@
+// Live job search filter
+document.addEventListener('DOMContentLoaded', function() {
+  var searchInput = document.getElementById('job-search-input');
+  var jobsList = document.getElementById('jobs-list');
+  if (searchInput && jobsList) {
+    searchInput.addEventListener('input', function() {
+      var val = searchInput.value.trim().toLowerCase();
+      var cards = jobsList.querySelectorAll('.job-card');
+      cards.forEach(function(card) {
+        var title = card.getAttribute('data-title') || '';
+        var desc = card.getAttribute('data-description') || '';
+        var loc = card.getAttribute('data-location') || '';
+        var comp = card.getAttribute('data-company') || '';
+        if (
+          val === '' ||
+          title.includes(val) ||
+          desc.includes(val) ||
+          loc.includes(val) ||
+          comp.includes(val)
+        ) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+});
 document.addEventListener('DOMContentLoaded', function() {
   var navToggle = document.getElementById('navToggle');
   var mainNav = document.querySelector('.main-nav');
