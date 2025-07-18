@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600&display=swap');
+
+body, html {
+  font-family: 'Open Sans', 'Poppins', Arial, sans-serif;
+  background: linear-gradient(to right, #e4f0e1 0%, #1d6faa 100%);
+  margin: 0;
+  padding: 0;
+}
+
+.hero-student {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 60vh;
+  box-sizing: border-box;
+  width: 100%;
+  background: linear-gradient(to right, #f0f4ff 0%, #ffffff 100%);
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 4px 32px rgba(26,35,126,0.06);
+  padding: 3.5rem 2rem 2.5rem 2rem;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-left-student {
+  flex: 1 1 340px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.2rem;
+}
+.hero-left-student h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.7rem;
+  font-family: 'Poppins', 'Open Sans', Arial, sans-serif;
+  animation: fadeIn 1.2s;
+}
+.hero-quote {
+  font-size: 1.15rem;
+  color: #3a3a3a;
+  margin-bottom: 0.7rem;
+  line-height: 1.7;
+  font-style: italic;
+  animation: fadeIn 2s;
+}
+.hero-actions-student {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+.hero-btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.13rem;
+  font-weight: 600;
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1.1rem 2.2rem;
+  margin: 0;
+  box-shadow: 0 2px 12px rgba(26,35,126,0.07);
+  transition: background-color 0.18s, box-shadow 0.18s, transform 0.13s;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  gap: 0.7em;
+  text-decoration: none;
+}
+.hero-btn-main:hover {
+  background-color: #1a237e;
+  box-shadow: 0 6px 24px rgba(26,35,126,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+.hero-btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.13rem;
+  font-weight: 600;
+  background: #e3eafc;
+  color: #3949ab;
+  border: 2px solid #3949ab;
+  border-radius: 12px;
+  padding: 1.1rem 2.2rem;
+  margin: 0;
+  box-shadow: 0 2px 12px rgba(26,35,126,0.04);
+  transition: background-color 0.18s, color 0.18s, box-shadow 0.18s, transform 0.13s;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  gap: 0.7em;
+  text-decoration: none;
+}
+.hero-btn-secondary:hover {
+  background-color: #3949ab;
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(26,35,126,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.hero-right-student {
+  flex: 1 1 320px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.hero-logo-student {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #e3eafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem auto;
+  box-shadow: 0 2px 12px rgba(26,35,126,0.07);
+}
+.hero-logo-student img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.hero-stats-student {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.stat-student-card {
+  background: linear-gradient(120deg, #e3fcec 0%, #e3eafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(26,35,126,0.07);
+  flex: 1 1 110px;
+  min-width: 110px;
+  max-width: 140px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 0.7rem 1.1rem 0.7rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+.stat-student-label {
+  font-size: 1.02rem;
+  color: #6b6b6b;
+  margin-bottom: 0.1rem;
+}
+.stat-student-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+@media (max-width: 900px) {
+  .hero-student {
+    padding: 1.5rem;
+    text-align: center;
+    gap: 2rem;
+  }
+  .hero-left-student, .hero-right-student {
+    max-width: 100%;
+  }
+  .hero-stats-student {
+    gap: 0.7rem;
+  }
+  .hero-actions-student{
+    justify-content: center;
+  }
+
+.hero-logo-student img {
+  width: 240px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.hero-logo-student{
+width: 250px;
+height: 250px;
+align-self: center;
+  height: 280px;
+}
+}

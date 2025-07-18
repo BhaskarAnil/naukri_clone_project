@@ -1,11 +1,13 @@
-
 # Explore Companies view for jobseekers
-from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Count
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from .forms import RegisterForm, LoginForm, ProfileForm, CompanyForm
-from .models import Profile, Company
+from .models import Company, CompanyFollows
+from jobs.models import Application,Job,SavedJob
+from reviews.models import CompanyReview
 from .forms import RegisterForm, LoginForm, ProfileForm, CompanyForm
 
 # register view 
@@ -64,18 +66,30 @@ def login_view(request):
 def employer_home_view(request):
     employer_name = request.user.username
     initials = ''.join([x[0] for x in employer_name.split()]).upper()[:2]
+    user = request.user
+    company = getattr(user, 'company', None)
+    job_post_count = Job.objects.filter(company=company).count()
+    total_applications = Application.objects.filter(job__company=company).count()
+    followers_count = CompanyFollows.objects.filter(company=company).count()
     context = {
         'employer_name': employer_name,
         'employer_initials': initials,
+        'job_post_count': job_post_count,
+        'total_applications': total_applications,
+        'followers_count': followers_count,
     }
     return render(request, 'profiles/employer_home.html', context)
 
 # jobseeker home view
 @login_required(login_url='login')
 def home_view(request):
-    jobseeker_name = request.user.username
+    user = request.user
+    saved_jobs_count = SavedJob.objects.filter(user=user).count()
+    applied_jobs_count = Application.objects.filter(user=user).count()
+    jobseeker_name = user.username
+
     initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
-    return render(request, 'profiles/home.html',{'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials})
+    return render(request, 'profiles/home.html',{'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials,'saved_jobs_count':saved_jobs_count,'applied_jobs_count':applied_jobs_count})
 
 # logout view
 @login_required(login_url='login')
@@ -137,6 +151,7 @@ def employer_profile_view(request):
         'company': company,
     }
     return render(request, 'profiles/employer_profile.html', context)
+# explore companies view
 def companies_view(request):
     user = request.user
     jobseeker_name = user.username
@@ -144,4 +159,22 @@ def companies_view(request):
     if not request.user.is_authenticated or getattr(request.user, 'is_employer', False):
         return redirect('home')
     companies = Company.objects.all()
+    company_ids = [company.company_id for company in companies]
+    followed_companies_ids = set(CompanyFollows.objects.filter(user=user, company_id__in=company_ids).values_list('company_id',flat=True))
+    for company in companies:
+        company.is_followed = company.company_id in followed_companies_ids
     return render(request, 'profiles/companies.html', {'companies': companies,'jobseeker_name':jobseeker_name, 'jobseeker_initials':initials,})
+# follow companies view
+@login_required(login_url='login')
+def companies_follow_view(request,company_id):
+    user = request.user
+    company = get_object_or_404(Company,pk=company_id)
+    CompanyFollows.objects.get_or_create(user=user, company=company)
+    return redirect(request.META.get('HTTP_REFERER', reverse('companies')))
+# unfollow companies view
+@login_required(login_url='login')
+def companies_unfollow_view(request,company_id):
+    user = request.user
+    company = get_object_or_404(Company,pk=company_id)
+    CompanyFollows.objects.filter(user=user, company=company).delete()
+    return redirect(request.META.get('HTTP_REFERER', reverse('companies')))

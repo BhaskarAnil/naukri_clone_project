@@ -3,6 +3,7 @@ body {
   background: #ffffff;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .main-header {
@@ -73,12 +74,13 @@ body {
   margin: 0 18px;
   text-decoration: none;
   font-size: 1rem;
+  transition: all 0.4s ease;
 }
 .main-nav a:hover, .main-nav a.active {
   color: #ffffff;
-  background-color: #3189fb;
-  border-radius: 4px;
-  padding: 5px;
+  background-color: #014aaa;
+  border-radius: 8px;
+  padding: 7px;
 }
 .user-menu {
   display: flex;
@@ -110,7 +112,7 @@ body {
   margin-top: 8px;
 }
   
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .header-inner, main {
     max-width: 100%;
     padding: 0 0.5rem;

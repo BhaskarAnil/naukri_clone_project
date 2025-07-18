@@ -24,7 +24,7 @@
                                 <button type="button" class="delete-job-btn" data-job-id="{{ job.job_id }}">Delete</button>
                             </div>
                             <div class="job-responses">
-                                <a href="/employer/jobs/{{ job.job_id }}/applications/" class="applications">Applications <span class="applications-count">{{ job.applications_count|default:0 }}</span></a>
+                                <a href="/employer/jobs/{{ job.job_id }}/applications/" class="applications">Applications : <span class="applications-count">{{ job.applications_count|default:0 }}</span></a>
                                 <div class="likedby"><i class="fa-solid fa-thumbs-up"></i> {{ job.likes_count|default:0 }}</div>
                             </div>
                         </div>

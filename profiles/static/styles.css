@@ -1,11 +1,20 @@
 body {
   font-family: Arial, sans-serif;
   padding: 1rem;
-  background: #d2e3f5;
+  background: linear-gradient(to left, rgb(18, 72, 143), rgb(143, 204, 230));
+
   margin-top: 12px;
 }
 
 /* registration page */
+
+.register-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  margin-top: 2.5rem;
+}
 .register-header {
   display: flex;
   justify-content: space-between;
@@ -48,13 +57,17 @@ body {
   font-weight: 600;
 }
 
-.register-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  margin-top: 2.5rem;
+
+.register-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
+
 .register-left {
   background: #fff;
   border-radius: 16px;
@@ -145,12 +158,76 @@ body {
 }
 
 /* login page */
-.login-main {
-  display: flex;
+.login-main{
+   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
 }
+.login-main {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.register-main span {
+  z-index: -1;
+}
+
+.login-main span, .register-main span {
+  position: absolute;
+  bottom: -100px;
+  font-size: 34px;
+  font-weight: bolder;
+  color:rgb(0, 29, 79); 
+  opacity: 0.7;
+  animation: floatUp 16s linear infinite;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.login-main span:nth-child(1), .register-main span:nth-child(1)  { left: 10%;  animation-delay: 0s; }
+.login-main span:nth-child(2), .register-main span:nth-child(2) { left: 75%; animation-delay: 2s; }
+.login-main span:nth-child(3), .register-main span:nth-child(3) { left: 5%; animation-delay: 4s; }
+.login-main span:nth-child(4), .register-main span:nth-child(4) { left: 70%; animation-delay: 1s; }
+.login-main span:nth-child(5), .register-main span:nth-child(5) { left: 50%; animation-delay: 3s; }
+.login-main span:nth-child(6), .register-main span:nth-child(6) { left: 73%; animation-delay: 5s; }
+.login-main span:nth-child(7), .register-main span:nth-child(7) { left: 8%; animation-delay: 6s; }
+.login-main span:nth-child(8), .register-main span:nth-child(8) { left: 60%; animation-delay: 7s; }
+.login-main span:nth-child(9), .register-main span:nth-child(9) { left: 5%; animation-delay: 8s; }
+.login-main span:nth-child(10), .register-main span:nth-child(10) { left: 72%; animation-delay: 9s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.login-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-box {
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 .login-box {
   background: #fff;
   border-radius: 16px;
@@ -181,7 +258,10 @@ body {
   display: block;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+  .login-main span {
+    display: none;
+  }
   .register-brand {
     font-size: 1.2rem;
     margin: 5px 5px;

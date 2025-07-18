@@ -1,9 +1,37 @@
 {% extends "profiles/employer_home_base.html" %}
 {% block content %}
+<link rel="stylesheet" href="/static/employer_dashboard.css">
 <main>
-    <h2>Welcome, {{ employer_name }}!</h2>
-    <p>Manage your company profile, post jobs, and review applicants all in one place.</p>
-  </main>
-  <script src="/static/jobs.js"></script>
-
- {% endblock %}
+  <section class="dashboard-hero">
+    <div class="dashboard-info">
+      <h1>Welcome, {{ employer_name }}!</h1>
+      <p>Here's a quick summary of your activity on naukri.</p>
+      <div class="dashboard-actions">
+        <a href="{% url 'employer_jobs' %}" class="dashboard-btn"><i class="fa-solid fa-rocket" style="color: #ffffff;"></i> Post a New Job</a>
+        <a href="{% url 'employer_jobs' %}" class="dashboard-btn"><i class="fa-solid fa-file-export" style="color: #ffffff;"></i> View Applications</a>
+        <a href="{% url 'employer_reviews' %}" class="dashboard-btn"><i class="fa-regular fa-file-lines" style="color: #ffffff;"></i>Go Through Reviews</a>
+      </div>
+    </div>
+    <div class="dashboard-stats">
+      <div class="stats-list">
+        <div class="stats-card">
+          <span class="stats-icon"><i class="fa-solid fa-users"></i></span>
+          <span class="stats-label">Followers</span>
+          <span class="stats-value">{{ followers_count }}</span>
+        </div>
+        <div class="stats-card">
+          <span class="stats-icon"><i class="fa-solid fa-file-lines"></i></span>
+          <span class="stats-label">Jobs Posted</span>
+          <span class="stats-value">{{ job_post_count }}</span>
+        </div>
+        <div class="stats-card">
+          <span class="stats-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+          <span class="stats-label">Applications</span>
+          <span class="stats-value">{{ total_applications }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="/static/jobs.js"></script>
+{% endblock %}

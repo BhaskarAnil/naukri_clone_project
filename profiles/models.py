@@ -27,6 +27,7 @@ class Profile(models.Model):
          return self.user.username 
 
 
+
 class Company(models.Model):
     company_id = models.AutoField(primary_key=True)
     user = models.OneToOneField(
@@ -36,4 +37,18 @@ class Company(models.Model):
     description = models.TextField(blank=True)
 
     def __str__(self):
-         return self.user.username 
+         return self.user.username
+
+
+
+class CompanyFollows(models.Model):
+    follow_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('User', on_delete=models.CASCADE, db_column='user_id', related_name='company_follows')
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, db_column='company_id', related_name='followers')
+    followed_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'company')
+
+    def __str__(self):
+        return f"{self.user.username} follows {self.company.company_name}"
