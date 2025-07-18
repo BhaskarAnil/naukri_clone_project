@@ -5,6 +5,7 @@ body, html {
   background: linear-gradient(120deg, #e3eafc 0%, #f5f7fa 100%);
   margin: 0;
   padding: 0;
+
 }
 
 .hero-employer {
@@ -128,17 +129,5 @@ body, html {
   }
   .hero-stats {
     gap: 0.7rem;
-  }
-}
-@media (max-width: 600px) {
-  .hero-employer {
-    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
-    border-radius: 0 0 18px 18px;
-  }
-  .stat-card {
-    min-width: 90px;
-    max-width: 100%;
-    min-height: 90px;
-    padding: 0.8rem 0.3rem 0.8rem 0.3rem;
   }
 }

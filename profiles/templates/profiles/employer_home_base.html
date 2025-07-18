@@ -22,7 +22,7 @@
       <nav class="main-nav">
         <a href="/employer-home/"{% if request.path == '/employer-home/' %} class="active"{% endif %}>Home</a>
         <a href="/employer/profile/"{% if request.path == '/employer/profile/' %} class="active"{% endif %}>Profile</a>
-        <a href="/employer/jobs/"{% if request.path == '/employer/jobs/' %} class="active"{% endif %}>My Jobs</a>
+        <a href="/employer/jobs/"{% if '/employer/jobs/' in request.path  %}class="active"{% endif %}>My Jobs</a>
         <a href="/employer/reviews/"{% if request.path == '/employer/reviews/' %} class="active"{% endif %}>Reviews</a>
         <a href="/logout" class="logout-btn">Logout</a>
       </nav>

@@ -35,7 +35,7 @@ main {
   background: #f4f8fb;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  padding: 1.5rem 1rem 1rem 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,12 +91,26 @@ main {
 }
 .follow-unfollow-btn{
   background-color: #196c02;
-  padding: 5px;
-  border-radius: 8px;
+  padding: 8px;
+  border-radius: 18px;
   color:#fff;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 600;
+}
+.reviews-btn{
+  padding: 10px;
+  margin: 0px 10px;
+  background-color: #0072e1;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.company-follow-review{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 @media (max-width: 700px) {

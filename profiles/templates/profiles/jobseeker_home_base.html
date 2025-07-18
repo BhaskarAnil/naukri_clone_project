@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="/static/home.css">
   <link rel="stylesheet" href="/static/profile.css">
   <link rel="stylesheet" href="/static/companies.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -24,8 +23,8 @@
       <nav class="main-nav">
         <a href="/home/"{% if request.path == '/home/' %} class="active"{% endif %}>Home</a>
         <a href="/profile/"{% if request.path == '/profile/' %} class="active"{% endif %}>Profile</a>
-        <a href="/explore-jobs/"{% if request.path == '/ecplore-jobs/' %} class="active"{% endif %}>Explore Jobs</a>
-        <a href="/companies/"{% if request.path == '/companies/' %} class="active"{% endif %}>Explore Companies</a>
+        <a href="/explore-jobs/"{% if request.path == '/explore-jobs/' %} class="active"{% endif %}>Explore Jobs</a>
+        <a href="/companies/"{% if '/companies/' in request.path %} class="active"{% endif %}>Explore Companies</a>
         <a href="/logout" class="logout-btn">Logout</a>
       </nav>
     </div>

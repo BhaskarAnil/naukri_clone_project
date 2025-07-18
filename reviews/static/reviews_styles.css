@@ -2,7 +2,7 @@
 
 .company-reviews {
   max-width: 700px;
-  background: linear-gradient(to bottom right, #f2faf2, #e9e5f4);
+  background: linear-gradient(to bottom right, #f6fcf6, #e8e2f9);
   margin: auto;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -16,13 +16,12 @@
   color: #1a237e;
   text-align: center;
 }
-
 .my-review, .form-add {
   margin-bottom: 2.5rem;
-  background: #f5f7fa;
+  background: #8db8f9;
   border-radius: 12px;
   padding: 1.5rem 1rem;
-  box-shadow: 0 2px 8px rgba(26,35,126,0.04);
+  box-shadow: 0 2px 8px rgba(26,35,126,0.4);
 }
 .list-reviews{
   width: 100%;
@@ -36,9 +35,13 @@
   border-radius: 10px;
   margin-bottom: 1.2rem;
   padding: 1rem;
-  box-shadow: 0 1px 4px rgba(26,35,126,0.03);
+  box-shadow: 0 1px 4px rgba(26,35,126,0.3);
   position: relative;
   transition: box-shadow 0.2s;
+}
+.list-reviews li{
+  background: #c9dcf9;
+
 }
 .review-top:hover, .list-reviews li:hover {
   box-shadow: 0 4px 16px rgba(26,35,126,0.08);
@@ -194,7 +197,13 @@ width: 100%;
 .replies{
   display: none;
   width: 100%;
+  margin-top: 10px;
   box-sizing: border-box;
+  border-radius: 20px;
+  background: rgba(114, 113, 113, 0.1);
+}
+.replies-list{
+  padding-right: 5px;
 }
 .replies-btn{
   padding: 8px;
@@ -234,6 +243,7 @@ width: 100%;
 }
 .review-actions-inline{
   display: flex;
+  padding-left: 10px;
   box-sizing: border-box;
   justify-content: flex-end;
 }

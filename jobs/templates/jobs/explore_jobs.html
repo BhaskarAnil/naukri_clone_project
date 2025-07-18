@@ -5,11 +5,11 @@
             <div class="my-jobs-header">
                 <h1 class="my-jobs-title">Explore Jobs</h1>
                 <div class="job-filters">
-                    <a href="/explore-jobs?filter=all"{% if filter_type == 'all' or not filter_type %} class="active "{% endif %}>All</a>
-                    <a href="/explore-jobs?filter=applied"{% if filter_type == 'applied' %} class="active"{% endif %}>Applied</a>
-                    <a href="/explore-jobs?filter=liked"{% if filter_type == 'liked' %} class="active "{% endif %}>Liked</a>
-                    <a href="/explore-jobs?filter=saved"{% if filter_type == 'saved' %} class="active "{% endif %}>Saved</a>
-                    <a href="/explore-jobs?filter=disliked"{% if filter_type == 'disliked' %} class="active "{% endif %}>Disliked</a>
+                    <a href="/explore-jobs?filter=all"{% if filter_type == 'all' or not filter_type %} class="active "{% endif %}><i class="fa-solid fa-list"></i> All</a>
+                    <a href="/explore-jobs?filter=applied"{% if filter_type == 'applied' %} class="active"{% endif %}><i class="fa-solid fa-check"></i> Applied</a>
+                    <a href="/explore-jobs?filter=liked"{% if filter_type == 'liked' %} class="active "{% endif %}><i class="fa-solid fa-thumbs-up"></i> Liked</a>
+                    <a href="/explore-jobs?filter=saved"{% if filter_type == 'saved' %} class="active "{% endif %}><i class="fa-solid fa-bookmark"> </i> Saved</a>
+                    <a href="/explore-jobs?filter=disliked"{% if filter_type == 'disliked' %} class="active "{% endif %}><i class="fa-solid fa-thumbs-down"></i> Disliked</a>
                 </div>
             </div>
             <div class="jobs-list">
@@ -26,34 +26,35 @@
                                 </span>
                             </div>
                             <div class="job-details">
-                                <p class="job-location">Location: {{ job.location }}</p>
-                                <p class="job-salary">Salary: {{ job.salary|default:'Not specified' }}</p>
+                                <p class="job-location"><strong>Location:</strong> {{ job.location }}</p>
+                                <p class="job-salary"><strong>Salary:</strong> {{ job.salary|default:'Not specified' }}</p>
+                                <p class="job-posted"><strong>Posted on:</strong> {{ job.posted_at|date:'M d, Y' }}</p>
+                                <p class="job-location"><strong>Description:</strong></p>
                                 <p class="job-description">{{ job.description|truncatewords:25 }}</p>
-                                <p class="job-posted">Posted on: {{ job.posted_at|date:'M d, Y' }}</p>
                             </div>
                             <div class="job-actions">
                                 {% if job.is_applied %}
-                                    <span class="applied-label applied">Applied</span>
+                                    <span class="applied-label applied"><i class="fa-solid fa-check"></i> Applied</span>
                                 {% else %}
                                     <a href="/jobs/{{ job.job_id }}/apply/" class="apply-job-btn">Apply</a>
                                 {% endif %}
 
                                 {% if job.is_saved %}
-                                    <a href="/jobs/{{ job.job_id }}/unsave/" class="unsave-job-btn saved">Unsave</a>
+                                    <a href="/jobs/{{ job.job_id }}/unsave/" class="unsave-job-btn saved"><i class="fa-solid fa-bookmark"></i></a>
                                 {% else %}
-                                    <a href="/jobs/{{ job.job_id }}/save/" class="save-job-btn">Save</a>
+                                    <a href="/jobs/{{ job.job_id }}/save/" class="save-job-btn"><i class="fa-solid fa-bookmark"></i></a>
                                 {% endif %}
 
                                 {% if job.is_liked %}
-                                    <a href="/jobs/{{ job.job_id }}" class="like-job-btn liked">Liked</a>
+                                    <a href="/jobs/{{ job.job_id }}" class="like-job-btn liked"><i class="fa-solid fa-thumbs-up"></i></a>
                                 {% else %}
-                                    <a href="/jobs/{{ job.job_id }}/like/" class="like-job-btn">Like</a>
+                                    <a href="/jobs/{{ job.job_id }}/like/" class="like-job-btn"><i class="fa-solid fa-thumbs-up"></i></a>
                                 {% endif %}
 
                                 {% if job.is_disliked %}
-                                    <a href="/jobs/{{ job.job_id }}" class="dislike-job-btn disliked">Disliked</a>
+                                    <a href="/jobs/{{ job.job_id }}" class="dislike-job-btn disliked"><i class="fa-solid fa-thumbs-down"></i></a>
                                 {% else %}
-                                    <a href="/jobs/{{ job.job_id }}/dislike/" class="dislike-job-btn">Dislike</a>
+                                    <a href="/jobs/{{ job.job_id }}/dislike/" class="dislike-job-btn"><i class="fa-solid fa-thumbs-down"></i></a>
                                 {% endif %}
                             </div>
                         </div>

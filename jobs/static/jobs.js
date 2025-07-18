@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
       mainNav.classList.toggle('open');
     });
   }
+  document.addEventListener('click', function(event) {
+  if (
+    mainNav.classList.contains('open') &&
+    !mainNav.contains(event.target) &&
+    !navToggle.contains(event.target)
+  ) {
+    mainNav.classList.remove('open');
+  }
+});
     const addJobForm = document.querySelector('.add-job-form');
     if (addJobForm) {
         const submitBtn = addJobForm.querySelector('.submit-job-btn');
