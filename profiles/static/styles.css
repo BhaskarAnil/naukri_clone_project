@@ -57,7 +57,6 @@ body {
   font-weight: 600;
 }
 
-
 .register-box {
   position: relative;
   z-index: 2;
@@ -66,7 +65,6 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-
 
 .register-left {
   background: #fff;
@@ -158,8 +156,8 @@ body {
 }
 
 /* login page */
-.login-main{
-   display: flex;
+.login-main {
+  display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
@@ -214,7 +212,8 @@ body {
 }
 
 @media (max-width: 800px) {
-  .login-main span, .register-main span {
+  .login-main span,
+  .register-main span {
     display: none;
   }
   .register-brand {
@@ -230,10 +229,9 @@ body {
     margin: 0px;
     justify-content: center;
     align-items: center;
-    padding-bottom:5px ;
-    
+    padding-bottom: 5px;
   }
-  .line-break{
+  .line-break {
     border-bottom: 0.5px solid black;
   }
   .register-login-switch {
@@ -243,14 +241,13 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    text-align:left;
+    text-align: left;
   }
- 
+
   .register-login-switch a {
     margin-left: 5px;
- 
   }
-  .register-login-switch .register-employer-btn{
+  .register-login-switch .register-employer-btn {
     width: 40%;
   }
   .register-field input {
@@ -259,16 +256,17 @@ body {
   .register-main {
     align-items: center;
     flex-direction: column-reverse;
-    gap:20px
+    gap: 20px;
   }
-  .register-left,.register-right{
+  .register-left,
+  .register-right {
     width: 90%;
     padding: 20px;
     margin: 0px;
     display: flex;
     flex-direction: column;
   }
-  .register-right h2{
+  .register-right h2 {
     font-size: 1.2rem;
     align-self: center;
   }

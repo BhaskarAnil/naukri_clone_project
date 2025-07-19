@@ -1,23 +1,19 @@
-
 html {
   box-sizing: border-box;
 }
-
 
 main {
   box-sizing: border-box;
   max-width: 1100px;
   margin: 2rem auto;
   width: 100%;
-  
 }
 .companies-section {
   background: #c0e4ef;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   padding: 1.5rem;
   max-width: 100%;
-  
 }
 .companies-title {
   font-size: 2.2rem;
@@ -34,7 +30,7 @@ main {
 .company-card {
   background: #f4f8fb;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -47,7 +43,7 @@ main {
   box-sizing: border-box;
 }
 .company-card:hover {
-  box-shadow: 0 6px 24px rgba(0,114,225,0.10);
+  box-shadow: 0 6px 24px rgba(0, 114, 225, 0.1);
   transform: translateY(-4px) scale(1.03);
 }
 .company-logo {
@@ -57,7 +53,7 @@ main {
   border-radius: 12px;
   margin-bottom: 1rem;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
   padding: 6px;
 }
 .company-logo-placeholder {
@@ -89,16 +85,16 @@ main {
   color: #555;
   min-height: 48px;
 }
-.follow-unfollow-btn{
+.follow-unfollow-btn {
   background-color: #196c02;
   padding: 8px;
   border-radius: 18px;
-  color:#fff;
+  color: #fff;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 600;
 }
-.reviews-btn{
+.reviews-btn {
   padding: 10px;
   margin: 0px 10px;
   background-color: #0072e1;
@@ -106,7 +102,7 @@ main {
   border-radius: 20px;
   text-decoration: none;
 }
-.company-follow-review{
+.company-follow-review {
   display: flex;
   width: 100%;
   justify-content: flex-end;
@@ -134,7 +130,8 @@ main {
     width: 100%;
     box-sizing: border-box;
   }
-  .company-logo, .company-logo-placeholder {
+  .company-logo,
+  .company-logo-placeholder {
     width: 36px;
     height: 36px;
     border-radius: 7px;

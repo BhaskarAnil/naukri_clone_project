@@ -1,44 +1,45 @@
-{% extends "profiles/employer_home_base.html" %}
-{% block content %}
-    <main>
-        <section class="add-job-section">
-            <h1 class="add-job-title">{% if edit_mode %}Edit Job{% else %}Add New Job{% endif %}</h1>
-            <form method="post" class="add-job-form">
-                {% csrf_token %}
-                {{ form.non_field_errors }}
-                <div class="form-fields">
-                    <div class="form-field">
-                        {{ form.title.label_tag }}{{ form.title }}
-                        {% if form.title.errors %}
-                            <span class="field-error">{{ form.title.errors.0 }}</span>
-                        {% endif %}
-                    </div>
-                    <div class="form-field">
-                        {{ form.description.label_tag }}{{ form.description }}
-                        {% if form.description.errors %}
-                            <span class="field-error">{{ form.description.errors.0 }}</span>
-                        {% endif %}
-                    </div>
-                    <div class="form-field">
-                        {{ form.location.label_tag }}{{ form.location }}
-                        {% if form.location.errors %}
-                            <span class="field-error">{{ form.location.errors.0 }}</span>
-                        {% endif %}
-                    </div>
-                    <div class="form-field">
-                        {{ form.salary.label_tag }}{{ form.salary }}
-                        {% if form.salary.errors %}
-                            <span class="field-error">{{ form.salary.errors.0 }}</span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="submit-job-btn">{% if edit_mode %}Save Changes{% else %}Add Job{% endif %}</button>
-                    <a href="/employer/jobs/" class="cancel-job-btn">Cancel</a>
-                </div>
-            </form>
-        </section>
-    </main>
-  <script src="/static/jobs.js"></script>
+{% extends "profiles/employer_home_base.html" %} {% block content %}
+<main>
+  <section class="add-job-section">
+    <h1 class="add-job-title">
+      {% if edit_mode %}Edit Job{% else %}Add New Job{% endif %}
+    </h1>
+    <form method="post" class="add-job-form">
+      {% csrf_token %} {{ form.non_field_errors }}
+      <div class="form-fields">
+        <div class="form-field">
+          {{ form.title.label_tag }}{{ form.title }} {% if form.title.errors %}
+          <span class="field-error">{{ form.title.errors.0 }}</span>
+          {% endif %}
+        </div>
+        <div class="form-field">
+          {{ form.description.label_tag }}{{ form.description }} {% if
+          form.description.errors %}
+          <span class="field-error">{{ form.description.errors.0 }}</span>
+          {% endif %}
+        </div>
+        <div class="form-field">
+          {{ form.location.label_tag }}{{ form.location }} {% if
+          form.location.errors %}
+          <span class="field-error">{{ form.location.errors.0 }}</span>
+          {% endif %}
+        </div>
+        <div class="form-field">
+          {{ form.salary.label_tag }}{{ form.salary }} {% if form.salary.errors
+          %}
+          <span class="field-error">{{ form.salary.errors.0 }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="submit-job-btn">
+          {% if edit_mode %}Save Changes{% else %}Add Job{% endif %}
+        </button>
+        <a href="/employer/jobs/" class="cancel-job-btn">Cancel</a>
+      </div>
+    </form>
+  </section>
+</main>
+<script src="/static/jobs.js"></script>
 
 {% endblock %}

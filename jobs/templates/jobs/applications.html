@@ -1,50 +1,73 @@
-{% extends "profiles/employer_home_base.html" %}
-{% block content %}
-    <main>
-      <section class="applications-section">
-        <div class="application-header">
-          <h1 class="application-title">Applications</h1>
-          <a href="/employer/jobs" class="back-to-jobs-btn"
-            >Jobs <i class="fa-solid fa-arrow-right"></i
-          ></a>
+{% extends "profiles/employer_home_base.html" %} {% block content %}
+<main>
+  <section class="applications-section">
+    <div class="application-header">
+      <h1 class="application-title">Applications</h1>
+      <a href="/employer/jobs" class="back-to-jobs-btn"
+        >Jobs <i class="fa-solid fa-arrow-right"></i
+      ></a>
+    </div>
+    <div class="applications-list">
+      {% if applications %} {% for application in applications %}
+      <div class="application-card">
+        <div class="application-card-header">
+          <h2 class="applicant-name">{{application.user.username}}</h2>
         </div>
-        <div class="applications-list">
-          {% if applications %} {% for application in applications %}
-          <div class="application-card">
-            <div class="application-card-header">
-              <h2 class="applicant-name">{{application.user.username}}</h2>
-            </div>
-            <div class="applicant-details">
-                    <p><strong>Full Name:</strong> {{ application.user.profile.full_name|default:"Not provided" }}</p>
+        <div class="applicant-details">
+          <p>
+            <strong>Full Name:</strong> {{
+            application.user.profile.full_name|default:"Not provided" }}
+          </p>
 
-                    <p><strong>Skills:</strong> {{ application.user.profile.skills|default:"Not provided" }}</p>
+          <p>
+            <strong>Skills:</strong> {{
+            application.user.profile.skills|default:"Not provided" }}
+          </p>
 
-                    <p><strong>Experience:</strong> {{ application.user.profile.experience|default:"Not provided" }}</p>
+          <p>
+            <strong>Experience:</strong> {{
+            application.user.profile.experience|default:"Not provided" }}
+          </p>
 
-                    <p><strong>Resume:</strong>
-                        {% if application.user.profile.resume_url %}
-                            <a href="{{ application.user.profile.resume_url }}" target="_blank" class="resume-url">View Resume</a>
-                        {% else %}
-                            Not provided
-                        {% endif %}
-                    </p>
+          <p>
+            <strong>Resume:</strong>
+            {% if application.user.profile.resume_url %}
+            <a
+              href="{{ application.user.profile.resume_url }}"
+              target="_blank"
+              class="resume-url"
+              >View Resume</a
+            >
+            {% else %} Not provided {% endif %}
+          </p>
 
-                    <p><strong>Location:</strong> {{ application.user.profile.location|default:"Not provided" }}</p>
+          <p>
+            <strong>Location:</strong> {{
+            application.user.profile.location|default:"Not provided" }}
+          </p>
 
-                    <p><strong>Email:</strong> {{ application.user.email|default:"Not provided" }}</p>
+          <p>
+            <strong>Email:</strong> {{ application.user.email|default:"Not
+            provided" }}
+          </p>
 
-                    <p><strong>Mobile:</strong> {{ application.user.mobile|default:"Not provided" }}</p>
+          <p>
+            <strong>Mobile:</strong> {{ application.user.mobile|default:"Not
+            provided" }}
+          </p>
 
-                    <p><strong>Applied on:</strong> {{ application.applied_at|date:'M d, Y' }}</p>
-
-            </div>
-          </div>
-          {% endfor %} {% else %}
-          <p class="no-application-msg">No one applied yet.</p>
-          {% endif %}
+          <p>
+            <strong>Applied on:</strong> {{ application.applied_at|date:'M d, Y'
+            }}
+          </p>
         </div>
-      </section>
-    </main>
-  <script src="/static/jobs.js"></script>
+      </div>
+      {% endfor %} {% else %}
+      <p class="no-application-msg">No one applied yet.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>
+<script src="/static/jobs.js"></script>
 
 {% endblock %}

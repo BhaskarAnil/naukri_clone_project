@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
   repliesBtn.addEventListener("click", () => {
     if (replies.style.display == "none") {
       replies.style.display = "block";
-      repliesBtn.textContent = 'Close'
+      repliesBtn.textContent = "Close";
       console.log(1);
     } else {
       console.log(0);
-      repliesBtn.textContent = ' Reply'
-      icon = document.createElement('i')
-      icon.classList = "fa-solid fa-reply"
-      repliesBtn.prepend(icon)
+      repliesBtn.textContent = " Reply";
+      icon = document.createElement("i");
+      icon.classList = "fa-solid fa-reply";
+      repliesBtn.prepend(icon);
       replies.style.display = "none";
     }
   });

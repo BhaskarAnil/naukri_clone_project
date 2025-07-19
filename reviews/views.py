@@ -15,8 +15,10 @@ def employer_reviews_view(request):
     if not company:
         return redirect('employer_profile')
 
-    reviews = company.reviews.select_related('user').prefetch_related('replies__user', 'likes').all()
-    liked_review_ids = set(ReviewLike.objects.filter(user=user, review__in=reviews).values_list('review_id', flat=True))
+    reviews = company.reviews.select_related(
+        'user').prefetch_related('replies__user', 'likes').all()
+    liked_review_ids = set(ReviewLike.objects.filter(
+        user=user, review__in=reviews).values_list('review_id', flat=True))
     for review in reviews:
         review.user_has_liked = review.review_id in liked_review_ids
 
@@ -37,10 +39,12 @@ def companies_reviews_view(request, company_id):
     jobseeker_name = user.username
     initials = ''.join([x[0] for x in jobseeker_name.split()]).upper()[:2]
     company = get_object_or_404(Company, pk=company_id)
-    reviews = CompanyReview.objects.filter(company=company).select_related('user').prefetch_related('replies__user', 'likes')
+    reviews = CompanyReview.objects.filter(company=company).select_related(
+        'user').prefetch_related('replies__user', 'likes')
     user_review = reviews.filter(user=user).first()
     other_reviews = reviews.exclude(user=user)
-    liked_review_ids = set(ReviewLike.objects.filter(user=user, review__in=other_reviews).values_list('review_id', flat=True))
+    liked_review_ids = set(ReviewLike.objects.filter(
+        user=user, review__in=other_reviews).values_list('review_id', flat=True))
     for review in other_reviews:
         review.user_has_liked = review.review_id in liked_review_ids
 
@@ -95,7 +99,6 @@ def add_reply(request, review_id):
     return redirect('reviews', company_id=review.company.company_id)
 
 
-
 @login_required(login_url='login')
 def like_review(request, review_id):
     review = get_object_or_404(CompanyReview, pk=review_id)
@@ -104,7 +107,6 @@ def like_review(request, review_id):
     if referer:
         return redirect(referer)
     return redirect('reviews', company_id=review.company.company_id)
-
 
 
 @login_required(login_url='login')
@@ -120,9 +122,9 @@ def unlike_review(request, review_id):
 @login_required(login_url='login')
 def delete_review(request, company_id):
     company = get_object_or_404(Company, pk=company_id)
-    review = CompanyReview.objects.filter(company=company, user=request.user).first()
+    review = CompanyReview.objects.filter(
+        company=company, user=request.user).first()
     if review:
         review.delete()
     return redirect('reviews', company_id=company_id)
     return redirect(request.META.get('HTTP_REFERER', reverse('explore_jobs')))
-

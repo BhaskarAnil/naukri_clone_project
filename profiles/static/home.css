@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  height:100vh;
+  height: 100vh;
   box-sizing: border-box;
 }
 .main-header {
@@ -9,7 +9,7 @@ body {
   top: 0;
   z-index: 100;
   background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid #e0e0e0;
 }
 .header-inner {
@@ -74,11 +74,11 @@ body {
   font-size: 1rem;
   transition: all 0.4s ease;
 }
- .main-nav a.active{
+.main-nav a.active {
   color: #0e2860;
   font-weight: 500;
   text-decoration: underline;
- }
+}
 .main-nav a:hover {
   border-radius: 8px;
   transform: scale(1.2);
@@ -112,13 +112,14 @@ body {
 .footer-copy {
   margin-top: 8px;
 }
-  
+
 @media (max-width: 800px) {
-  body{
+  body {
     padding: 10px;
     min-height: fit-content;
   }
-  .header-inner, main {
+  .header-inner,
+  main {
     max-width: 100%;
     padding: 0 0.5rem;
   }
@@ -146,7 +147,7 @@ body {
     font-size: 0.97rem;
     width: 100%;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     position: absolute;
     top: 50px;
     right: 0;
@@ -157,9 +158,10 @@ body {
   .main-nav.open {
     display: flex;
     width: 60%;
-    background:#012f91;
+    background: #012f91;
   }
-  .main-nav a, .main-nav a.active {
+  .main-nav a,
+  .main-nav a.active {
     margin: 0;
     color: white;
     font-size: 0.97rem;
@@ -187,11 +189,13 @@ body {
   .username {
     font-size: 0.98rem;
   }
-  .home-section, .welcome-message {
+  .home-section,
+  .welcome-message {
     padding: 1rem 0.3rem;
     border-radius: 10px;
   }
-  .home-title, .welcome-message h1 {
+  .home-title,
+  .welcome-message h1 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
   }
@@ -218,7 +222,8 @@ body {
     font-size: 0.98rem;
     margin-bottom: 0.3rem;
   }
-  .home-description, .welcome-message p {
+  .home-description,
+  .welcome-message p {
     font-size: 0.95rem;
     min-height: 24px;
   }

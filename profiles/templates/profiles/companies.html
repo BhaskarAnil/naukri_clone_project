@@ -1,35 +1,53 @@
-{% extends "profiles/jobseeker_home_base.html" %}
-{% block content %}
-  <main>
-    <section class="companies-section">
-      <h1 class="companies-title">Explore Companies</h1>
-      <div class="companies-list">
-        {% for company in companies %}
-          <div class="company-card">
-            {% if company.company_logo_url %}
-              <img src="{{ company.company_logo_url }}" alt="{{ company.company_name }} Logo" class="company-logo" />
-            {% else %}
-              <div class="company-logo-placeholder">{{ company.company_name|slice:"2"|upper }}</div>
-            {% endif %}
-            <div class="company-info">
-              <h2 class="company-name">{{ company.company_name }}</h2>
-              <p class="company-description">{{ company.description|default:"No description provided." }}</p>
-            </div>
-          <div class="company-follow-review">
-            {% if company.is_followed %}
-              <a href="/companies/{{ company.company_id }}/unfollow/" class="follow-unfollow-btn"><i class="fa-solid fa-check"></i> Following</a>
-            {% else %}
-              <a href="/companies/{{ company.company_id }}/follow/" class="follow-unfollow-btn">+ Follow</a>
-            {% endif %}
-              <a href="/companies/{{ company.company_id }}/reviews/" class="reviews-btn"><i class="fa-solid fa-list"></i> Reviews</a>
-          </div>
-
-          </div>
-        {% empty %}
-          <p>No companies found.</p>
-        {% endfor %}
+{% extends "profiles/jobseeker_home_base.html" %} {% block content %}
+<main>
+  <section class="companies-section">
+    <h1 class="companies-title">Explore Companies</h1>
+    <div class="companies-list">
+      {% for company in companies %}
+      <div class="company-card">
+        {% if company.company_logo_url %}
+        <img
+          src="{{ company.company_logo_url }}"
+          alt="{{ company.company_name }} Logo"
+          class="company-logo"
+        />
+        {% else %}
+        <div class="company-logo-placeholder">
+          {{ company.company_name|slice:"2"|upper }}
+        </div>
+        {% endif %}
+        <div class="company-info">
+          <h2 class="company-name">{{ company.company_name }}</h2>
+          <p class="company-description">
+            {{ company.description|default:"No description provided." }}
+          </p>
+        </div>
+        <div class="company-follow-review">
+          {% if company.is_followed %}
+          <a
+            href="/companies/{{ company.company_id }}/unfollow/"
+            class="follow-unfollow-btn"
+            ><i class="fa-solid fa-check"></i> Following</a
+          >
+          {% else %}
+          <a
+            href="/companies/{{ company.company_id }}/follow/"
+            class="follow-unfollow-btn"
+            >+ Follow</a
+          >
+          {% endif %}
+          <a
+            href="/companies/{{ company.company_id }}/reviews/"
+            class="reviews-btn"
+            ><i class="fa-solid fa-list"></i> Reviews</a
+          >
+        </div>
       </div>
-    </section>
-  </main>
- <script src="/static/jobs.js"></script>
- {% endblock %}
+      {% empty %}
+      <p>No companies found.</p>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+<script src="/static/jobs.js"></script>
+{% endblock %}

@@ -1,11 +1,11 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
 
 .company-reviews {
   max-width: 700px;
   background: linear-gradient(to bottom right, #f6fcf6, #e8e2f9);
   margin: auto;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   padding: 2rem 2.5rem;
 }
 
@@ -16,18 +16,20 @@
   color: #1a237e;
   text-align: center;
 }
-.my-review, .form-add {
+.my-review,
+.form-add {
   margin-bottom: 2.5rem;
   background: #8db8f9;
   border-radius: 12px;
   padding: 1.5rem 1rem;
-  box-shadow: 0 2px 8px rgba(26,35,126,0.4);
+  box-shadow: 0 2px 8px rgba(26, 35, 126, 0.4);
 }
-.list-reviews{
+.list-reviews {
   width: 100%;
   padding: 0px;
 }
-.review-top, .list-reviews li {
+.review-top,
+.list-reviews li {
   list-style: none;
   background: #f9fafc;
   width: 100%;
@@ -35,16 +37,16 @@
   border-radius: 10px;
   margin-bottom: 1.2rem;
   padding: 1rem;
-  box-shadow: 0 1px 4px rgba(26,35,126,0.3);
+  box-shadow: 0 1px 4px rgba(26, 35, 126, 0.3);
   position: relative;
   transition: box-shadow 0.2s;
 }
-.list-reviews li{
+.list-reviews li {
   background: #c9dcf9;
-
 }
-.review-top:hover, .list-reviews li:hover {
-  box-shadow: 0 4px 16px rgba(26,35,126,0.08);
+.review-top:hover,
+.list-reviews li:hover {
+  box-shadow: 0 4px 16px rgba(26, 35, 126, 0.08);
 }
 .review-top {
   display: flex;
@@ -64,13 +66,15 @@
   margin-left: auto;
 }
 .review-content {
-width: 100%;
+  width: 100%;
   font-size: 1.08rem;
   color: #222;
   margin-bottom: 0.5rem;
 }
 
-.btn-edit, .btn-delete, .btn-add {
+.btn-edit,
+.btn-delete,
+.btn-add {
   background: #0957cc;
   color: #fff;
   width: fit-content;
@@ -86,7 +90,8 @@ width: 100%;
   align-items: center;
   gap: 0.5em;
 }
-.btn-edit:hover, .btn-add:hover {
+.btn-edit:hover,
+.btn-add:hover {
   background-color: #1a237e;
 }
 .btn-delete {
@@ -101,7 +106,7 @@ width: 100%;
   background: #f0f4ff;
   border: 1.5px solid #b6c3e6;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(26,35,126,0.07);
+  box-shadow: 0 2px 12px rgba(26, 35, 126, 0.07);
   padding: 1.5rem 1.2rem 1.2rem 1.2rem;
   max-width: 520px;
   margin-left: auto;
@@ -109,7 +114,7 @@ width: 100%;
   transition: box-shadow 0.2s, border 0.2s;
 }
 .form-edit:focus-within {
-  box-shadow: 0 4px 24px rgba(26,35,126,0.13);
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.13);
   border-color: #3949ab;
 }
 .form-edit .field-review label {
@@ -118,7 +123,8 @@ width: 100%;
   margin-bottom: 0.4rem;
   display: block;
 }
-.form-edit .field-review textarea,.review-content p #id_review_text,
+.form-edit .field-review textarea,
+.review-content p #id_review_text,
 .form-edit .field-review input[type="text"] {
   width: 100%;
   box-sizing: border-box;
@@ -133,7 +139,8 @@ width: 100%;
   transition: border 0.2s;
   resize: vertical;
 }
-.form-edit .field-review textarea:focus,.review-content p #id_review_text,
+.form-edit .field-review textarea:focus,
+.review-content p #id_review_text,
 .form-edit .field-review input[type="text"]:focus {
   border-color: #3949ab;
   outline: none;
@@ -163,38 +170,38 @@ width: 100%;
   font-size: 0.98rem;
   margin-left: 0.5rem;
 }
-.form-edit{
-     display: flex;
+.form-edit {
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.review-content p{
-    width: 100%;
-    word-wrap: break-word;
+.review-content p {
+  width: 100%;
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
-.review-content p #id_review_text{
-    width: 100%;
-    word-wrap: break-word;
+.review-content p #id_review_text {
+  width: 100%;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   padding: 10px;
 }
-.list-reviews li{
+.list-reviews li {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   width: 100%;
 }
-.list-reviews .review-top{
+.list-reviews .review-top {
   width: 100%;
 }
-.list-reviews li p{
+.list-reviews li p {
   width: 100%;
-    word-wrap: break-word;
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
-.replies{
+.replies {
   display: none;
   width: 100%;
   margin-top: 10px;
@@ -202,10 +209,10 @@ width: 100%;
   border-radius: 20px;
   background: rgba(114, 113, 113, 0.1);
 }
-.replies-list{
+.replies-list {
   padding-right: 5px;
 }
-.replies-btn{
+.replies-btn {
   padding: 8px;
   margin-left: 5px;
   background-color: #0648ac;
@@ -215,21 +222,20 @@ width: 100%;
   align-self: flex-end;
   cursor: pointer;
 }
-.list-reviews li .btn-edit{
+.list-reviews li .btn-edit {
   background-color: rgb(255, 255, 255);
-  color : rgb(33, 121, 2);
+  color: rgb(33, 121, 2);
   border: 1px solid green;
 }
-.list-reviews li .active{
+.list-reviews li .active {
   background-color: green;
   color: rgb(255, 255, 255);
 }
-.review-actions{
+.review-actions {
   box-sizing: border-box;
   padding: 20px 5px;
 }
-.reply-input{
-
+.reply-input {
   width: 90%;
   box-sizing: border-box;
   border: 0.5px solid #b6c3e6;
@@ -241,28 +247,28 @@ width: 100%;
   margin-bottom: 0.3rem;
   resize: vertical;
 }
-.review-actions-inline{
+.review-actions-inline {
   display: flex;
   padding-left: 10px;
   box-sizing: border-box;
   justify-content: flex-end;
 }
-.reply-btn{
+.reply-btn {
   padding: 5px;
   font-size: 1rem;
 }
-.review-replies strong{
-padding: 5px;
+.review-replies strong {
+  padding: 5px;
 }
-.reply-user{
+.reply-user {
   font-weight: bold;
 }
-li .reply-item{
+li .reply-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.reply-text{
+.reply-text {
   word-break: break-word;
   padding: 10px;
   width: 100%;
@@ -271,17 +277,17 @@ li .reply-item{
   .company-reviews {
     padding: 1rem 0.5rem;
   }
-  .my-review, .form-add {
+  .my-review,
+  .form-add {
     padding: 1rem 0.5rem;
   }
   .company-reviews h1 {
     font-size: 1.4rem;
   }
-  .my-review{
+  .my-review {
     margin-bottom: 10px;
   }
-  .my-review h2{
+  .my-review h2 {
     font-size: 1.2rem;
   }
 }
-

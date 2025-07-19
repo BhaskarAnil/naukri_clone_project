@@ -1,39 +1,56 @@
-{% extends "profiles/employer_home_base.html" %}
-{% block content %}
-    <main>
-        <section class="my-jobs-section">
-            <div class="my-jobs-header">
-                <h1 class="my-jobs-title">Posted Jobs</h1>
-                <a href="/employer/jobs/add/" class="add-job-btn">+ Add New Job</a>
-            </div>
-            <div class="jobs-list">
-                {% if jobs %}
-                    {% for job in jobs %}
-                        <div class="job-card">
-                            <div class="job-card-header">
-                                <h2 class="job-title">{{ job.title }}</h2>
-                            </div>
-                            <div class="job-details">
-                                <p class="job-location">Location: {{ job.location }}</p>
-                                <p class="job-salary">Salary: {{ job.salary|default:'Not specified' }}</p>
-                                <p class="job-description">{{ job.description|truncatewords:20 }}</p>
-                                <p class="job-posted">Posted on: {{ job.posted_at|date:'M d, Y' }}</p>
-                            </div>
-                            <div class="job-actions">
-                                <a href="/employer/jobs/{{ job.job_id }}/edit/" class="edit-job-btn">Edit</a>
-                                <button type="button" class="delete-job-btn" data-job-id="{{ job.job_id }}">Delete</button>
-                            </div>
-                            <div class="job-responses">
-                                <a href="/employer/jobs/{{ job.job_id }}/applications/" class="applications">Applications : <span class="applications-count">{{ job.applications_count|default:0 }}</span></a>
-                                <div class="likedby"><i class="fa-solid fa-thumbs-up"></i> {{ job.likes_count|default:0 }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="no-jobs-msg">You have not posted any jobs yet.</p>
-                {% endif %}
-            </div>
-        </section>
-    </main>
-  <script src="/static/jobs.js"></script>
- {% endblock %}
+{% extends "profiles/employer_home_base.html" %} {% block content %}
+<main>
+  <section class="my-jobs-section">
+    <div class="my-jobs-header">
+      <h1 class="my-jobs-title">Posted Jobs</h1>
+      <a href="/employer/jobs/add/" class="add-job-btn">+ Add New Job</a>
+    </div>
+    <div class="jobs-list">
+      {% if jobs %} {% for job in jobs %}
+      <div class="job-card">
+        <div class="job-card-header">
+          <h2 class="job-title">{{ job.title }}</h2>
+        </div>
+        <div class="job-details">
+          <p class="job-location">Location: {{ job.location }}</p>
+          <p class="job-salary">
+            Salary: {{ job.salary|default:'Not specified' }}
+          </p>
+          <p class="job-description">{{ job.description|truncatewords:20 }}</p>
+          <p class="job-posted">Posted on: {{ job.posted_at|date:'M d, Y' }}</p>
+        </div>
+        <div class="job-actions">
+          <a href="/employer/jobs/{{ job.job_id }}/edit/" class="edit-job-btn"
+            >Edit</a
+          >
+          <button
+            type="button"
+            class="delete-job-btn"
+            data-job-id="{{ job.job_id }}"
+          >
+            Delete
+          </button>
+        </div>
+        <div class="job-responses">
+          <a
+            href="/employer/jobs/{{ job.job_id }}/applications/"
+            class="applications"
+            >Applications :
+            <span class="applications-count"
+              >{{ job.applications_count|default:0 }}</span
+            ></a
+          >
+          <div class="likedby">
+            <i class="fa-solid fa-thumbs-up"></i> {{ job.likes_count|default:0
+            }}
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <p class="no-jobs-msg">You have not posted any jobs yet.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>
+<script src="/static/jobs.js"></script>
+{% endblock %}

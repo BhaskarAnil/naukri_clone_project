@@ -1,25 +1,33 @@
-{% extends "profiles/jobseeker_home_base.html" %}
-{% block content %}
-<link rel="stylesheet" href="/static/student_hero.css">
+{% extends "profiles/jobseeker_home_base.html" %} {% block content %}
+<link rel="stylesheet" href="/static/student_hero.css" />
 <main>
   <section class="hero-student">
     <div class="hero-left-student">
       <h1>Welcome back, {{ jobseeker_name }}!</h1>
       <div class="hero-quote">
-        <p>Your future is created by what you do today,<br>
-        Not tomorrow.<br>
-        Every application is a step forward.<br>
-        Keep learning, keep growing.<br>
-        The best opportunities await you!</p>
+        <p>
+          Your future is created by what you do today,<br />
+          Not tomorrow.<br />
+          Every application is a step forward.<br />
+          Keep learning, keep growing.<br />
+          The best opportunities await you!
+        </p>
       </div>
       <div class="hero-actions-student">
-        <a href="{% url 'explore_jobs' %}" class="hero-btn-main">Apply to New Jobs</a>
-        <a href="{% url 'companies' %}" class="hero-btn-secondary">Explore Companies</a>
+        <a href="{% url 'explore_jobs' %}" class="hero-btn-main"
+          >Apply to New Jobs</a
+        >
+        <a href="{% url 'companies' %}" class="hero-btn-secondary"
+          >Explore Companies</a
+        >
       </div>
     </div>
     <div class="hero-right-student">
       <div class="hero-logo-student">
-        <img src="https://neodove.com/wp-content/uploads/2023/08/Naukari_Hero.jpg" alt="Student Logo">
+        <img
+          src="https://neodove.com/wp-content/uploads/2023/08/Naukari_Hero.jpg"
+          alt="Student Logo"
+        />
       </div>
       <div class="hero-stats-student">
         <div class="stat-student-card">

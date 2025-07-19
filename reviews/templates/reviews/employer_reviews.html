@@ -1,69 +1,99 @@
-{% extends "profiles/employer_home_base.html" %}
-{% block content %}
-<link rel="stylesheet" href="/static/reviews_styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% extends "profiles/employer_home_base.html" %} {% block content %}
+<link rel="stylesheet" href="/static/reviews_styles.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+/>
 <main>
-<section class="company-reviews">
+  <section class="company-reviews">
     <h1>Company Reviews</h1>
     {% if reviews %}
-      <ul class="list-reviews">
-        {% for review in reviews %}
-          <li>
-            <div class="review-top">
-              <span class="review-user"><i class="fa-solid fa-user"></i> {{ review.user.username }}</span>
-              <span class="review-date"><i class="fa-regular fa-calendar"></i> {{ review.created_at|date:"M d, Y" }}</span>
-            </div>
-            <div class="review-content">
-              <p>{{ review.review_text|default:"No comment." }}</p>
-            </div>
-            <!-- Like Button -->
-            {% if review.user_has_liked %}
-            <form method="post" action="{% url 'unlike_review' review.review_id %}" class="review-action-inline">
+    <ul class="list-reviews">
+      {% for review in reviews %}
+      <li>
+        <div class="review-top">
+          <span class="review-user"
+            ><i class="fa-solid fa-user"></i> {{ review.user.username }}</span
+          >
+          <span class="review-date"
+            ><i class="fa-regular fa-calendar"></i> {{ review.created_at|date:"M
+            d, Y" }}</span
+          >
+        </div>
+        <div class="review-content">
+          <p>{{ review.review_text|default:"No comment." }}</p>
+        </div>
+        <!-- Like Button -->
+        {% if review.user_has_liked %}
+        <form
+          method="post"
+          action="{% url 'unlike_review' review.review_id %}"
+          class="review-action-inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn-edit active" title="Unlike">
+            <i class="fa-solid fa-thumbs-up"></i> ({{ review.likes.count }})
+          </button>
+        </form>
+        {% else %}
+        <form
+          method="post"
+          action="{% url 'like_review' review.review_id %}"
+          class="review-action-inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn-edit" title="Like">
+            <i class="fa-regular fa-thumbs-up"></i> ({{ review.likes.count }})
+          </button>
+        </form>
+        {% endif %}
+        <!-- Reply Button and Replies -->
+        <div id="replies-btn" class="replies-btn">
+          <i class="fa-solid fa-reply"></i> Reply
+        </div>
+        <div class="replies" id="replies">
+          <div class="review-actions">
+            <form
+              method="post"
+              action="{% url 'add_reply' review.review_id %}"
+              class="review-action-inline"
+            >
               {% csrf_token %}
-              <button type="submit" class="btn-edit active" title="Unlike">
-                <i class="fa-solid fa-thumbs-up"></i> ({{ review.likes.count }})
+              <input
+                type="text"
+                name="reply_text"
+                placeholder="Write a reply..."
+                class="reply-input"
+              />
+              <button type="submit" class="btn-add reply-btn">
+                <i class="fa-solid fa-reply"></i> Reply
               </button>
             </form>
-            {% else %}
-            <form method="post" action="{% url 'like_review' review.review_id %}" class="review-action-inline">
-              {% csrf_token %}
-              <button type="submit" class="btn-edit" title="Like">
-                <i class="fa-regular fa-thumbs-up"></i> ({{ review.likes.count }})
-              </button>
-            </form>
-            {% endif %}
-            <!-- Reply Button and Replies -->
-            <div id="replies-btn" class="replies-btn"><i class="fa-solid fa-reply"></i> Reply</div>
-            <div class="replies" id="replies">
-              <div class="review-actions">
-                <form method="post" action="{% url 'add_reply' review.review_id %}" class="review-action-inline">
-                  {% csrf_token %}
-                  <input type="text" name="reply_text" placeholder="Write a reply..." class="reply-input">
-                  <button type="submit" class="btn-add reply-btn">
-                    <i class="fa-solid fa-reply"></i> Reply
-                  </button>
-                </form>
-              </div>
-              {% if review.replies.all %}
-                <div class="review-replies">
-                  <strong>Replies:</strong>
-                  <ul class="replies-list">
-                    {% for reply in review.replies.all %}
-                      <li class="reply-item">
-                        <div class="reply-user"><i class="fa-solid fa-user"></i> {{ reply.user.username }}</div>
-                        <div class="reply-date">{{ reply.created_at|date:"M d, Y H:i" }}</div>
-                        <div class="reply-text">{{ reply.reply_text }}</div>
-                      </li>
-                    {% endfor %}
-                  </ul>
+          </div>
+          {% if review.replies.all %}
+          <div class="review-replies">
+            <strong>Replies:</strong>
+            <ul class="replies-list">
+              {% for reply in review.replies.all %}
+              <li class="reply-item">
+                <div class="reply-user">
+                  <i class="fa-solid fa-user"></i> {{ reply.user.username }}
                 </div>
-              {% endif %}
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+                <div class="reply-date">
+                  {{ reply.created_at|date:"M d, Y H:i" }}
+                </div>
+                <div class="reply-text">{{ reply.reply_text }}</div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
     {% else %}
-      <p>No reviews yet for your company.</p>
+    <p>No reviews yet for your company.</p>
     {% endif %}
   </section>
 </main>

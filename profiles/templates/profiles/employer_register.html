@@ -1,85 +1,152 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Employer Register | naukri</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'styles.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-  <header class="register-header">
-    <h1 class="register-brand"><span class="brand-img"><img src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png" alt="naukri"></span> naukri</h1>
-  </header>
-  <main>
-    <div class="register-main">
-      
-      <div class="register-left">
-        <img src="https://static.naukimg.com/s/7/104/assets/images/white-boy.a0d2814a.png" alt="Register on Naukri" />
-        <h3>On registering, you can</h3>
-        <ul class="register-benefits">
-          <li><i class="fa-solid fa-circle-check benefit-check"></i> Build your profile and find jobseekers</li>
-          <li><i class="fa-solid fa-circle-check benefit-check"></i> Post jobs and manage applications easily</li>
-          <li><i class="fa-solid fa-circle-check benefit-check"></i> Grow your company with the best talent</li>
-        </ul>
-      </div>
-      <div class="register-right">
-         <nav class="register-nav">
-      <div class="register-login-switch">
-        Already Registered? <a href="{% url 'login' %}">Login</a>
-        |
-        <a href="{% url 'register' %}" class="register-employer-btn">Register as Jobseeker</a>
-      </div>
-    </nav>
-    <div class="line-break"></div>
-        <h2>Create your Employer profile</h2>
-        <p>Post jobs & manage applicants from India's No.1 Job Site</p>
-        <form method="POST" class="register-form">
-          {% csrf_token %}
-          <input type="hidden" name="is_employer" value="true" />
-          <div class="register-field">
-            <label for="username">Full name*</label>
-            <input type="text" name="username" id="username" placeholder="What is your name?" value="{{ form.username.value|default_if_none:'' }}" required />
-            {% if form.username.errors %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employer Register | naukri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="register-header">
+      <h1 class="register-brand">
+        <span class="brand-img"
+          ><img
+            src="https://pbs.twimg.com/profile_images/1772331192085274624/PlbkwMwX_400x400.png"
+            alt="naukri"
+        /></span>
+        naukri
+      </h1>
+    </header>
+    <main>
+      <div class="register-main">
+        <div class="register-left">
+          <img
+            src="https://static.naukimg.com/s/7/104/assets/images/white-boy.a0d2814a.png"
+            alt="Register on Naukri"
+          />
+          <h3>On registering, you can</h3>
+          <ul class="register-benefits">
+            <li>
+              <i class="fa-solid fa-circle-check benefit-check"></i> Build your
+              profile and find jobseekers
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check benefit-check"></i> Post jobs
+              and manage applications easily
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check benefit-check"></i> Grow your
+              company with the best talent
+            </li>
+          </ul>
+        </div>
+        <div class="register-right">
+          <nav class="register-nav">
+            <div class="register-login-switch">
+              Already Registered? <a href="{% url 'login' %}">Login</a>
+              |
+              <a href="{% url 'register' %}" class="register-employer-btn"
+                >Register as Jobseeker</a
+              >
+            </div>
+          </nav>
+          <div class="line-break"></div>
+          <h2>Create your Employer profile</h2>
+          <p>Post jobs & manage applicants from India's No.1 Job Site</p>
+          <form method="POST" class="register-form">
+            {% csrf_token %}
+            <input type="hidden" name="is_employer" value="true" />
+            <div class="register-field">
+              <label for="username">Full name*</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="What is your name?"
+                value="{{ form.username.value|default_if_none:'' }}"
+                required
+              />
+              {% if form.username.errors %}
               <span class="register-error">{{ form.username.errors.0 }}</span>
-            {% endif %}
-          </div>
-          <div class="register-field">
-            <label for="email">Email ID*</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email" value="{{ form.email.value|default_if_none:'' }}" required />
-            <small class="register-hint">We'll send important notifications and applicant updates to this email</small>
-            {% if form.email.errors %}
+              {% endif %}
+            </div>
+            <div class="register-field">
+              <label for="email">Email ID*</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                value="{{ form.email.value|default_if_none:'' }}"
+                required
+              />
+              <small class="register-hint"
+                >We'll send important notifications and applicant updates to
+                this email</small
+              >
+              {% if form.email.errors %}
               <span class="register-error">{{ form.email.errors.0 }}</span>
-            {% endif %}
-          </div>
-          <div class="register-field">
-            <label for="password">Password*</label>
-            <input type="password" name="password" id="password" placeholder="(Minimum 6 characters)" required />
-            <small class="register-hint">This helps your account stay protected</small>
-            {% if form.password.errors %}
+              {% endif %}
+            </div>
+            <div class="register-field">
+              <label for="password">Password*</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="(Minimum 6 characters)"
+                required
+              />
+              <small class="register-hint"
+                >This helps your account stay protected</small
+              >
+              {% if form.password.errors %}
               <span class="register-error">{{ form.password.errors.0 }}</span>
-            {% endif %}
-          </div>
-          <div class="register-field">
-            <label for="mobile">Mobile number*</label>
-            <input type="tel" name="mobile" id="mobile" placeholder="+91 Enter your mobile number" value="{{ form.mobile.value|default_if_none:'' }}" required />
-            <small class="register-hint">We'll use this number for account security and applicant queries</small>
-            {% if form.mobile.errors %}
+              {% endif %}
+            </div>
+            <div class="register-field">
+              <label for="mobile">Mobile number*</label>
+              <input
+                type="tel"
+                name="mobile"
+                id="mobile"
+                placeholder="+91 Enter your mobile number"
+                value="{{ form.mobile.value|default_if_none:'' }}"
+                required
+              />
+              <small class="register-hint"
+                >We'll use this number for account security and applicant
+                queries</small
+              >
+              {% if form.mobile.errors %}
               <span class="register-error">{{ form.mobile.errors.0 }}</span>
-            {% endif %}
-          </div>
-          <div class="register-field">
-            <label for="company_name">Company Name*</label>
-            <input type="text" name="company_name" id="company_name" placeholder="Enter your company name" value="{{ form.company_name.value|default_if_none:'' }}" required />
-            {% if form.company_name.errors %}
-              <span class="register-error">{{ form.company_name.errors.0 }}</span>
-            {% endif %}
-          </div>
-          <button type="submit" class="register-submit">Register now</button>
-        </form>
+              {% endif %}
+            </div>
+            <div class="register-field">
+              <label for="company_name">Company Name*</label>
+              <input
+                type="text"
+                name="company_name"
+                id="company_name"
+                placeholder="Enter your company name"
+                value="{{ form.company_name.value|default_if_none:'' }}"
+                required
+              />
+              {% if form.company_name.errors %}
+              <span class="register-error"
+                >{{ form.company_name.errors.0 }}</span
+              >
+              {% endif %}
+            </div>
+            <button type="submit" class="register-submit">Register now</button>
+          </form>
+        </div>
       </div>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
